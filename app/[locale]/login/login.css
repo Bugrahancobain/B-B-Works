@@ -1,0 +1,55 @@
+.loginPageMain{
+    width: 98%;
+    height: calc(99vh - 100px);
+    text-align: center;
+    margin-top: 3% !important;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formClass{
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    min-height: 50%;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.loginPageInputDiv{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.loginPageInputDiv input{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 12px;
+text-align: center;
+}
+
+.loginPageBtnDiv{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.loginPageBtnDiv button{
+    padding: 8px;
+    margin: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 161px;
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.loginPageBtnDiv button:hover{
+    color: white;
+    background-color: black;
+}

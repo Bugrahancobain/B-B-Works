@@ -1,0 +1,14 @@
+.adminHomeMain{
+    width: 98%;
+    height: calc(99vh - 100px);
+    text-align: center;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.adminSideBar{
+    position: absolute;
+    left: 0;
+}

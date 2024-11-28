@@ -1,0 +1,121 @@
+.referencesPage {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.referencePageHeaderDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 20px;
+    padding: 100px 0;
+    font-size: 30px;
+}
+
+.referencesHeader {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.referencesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    justify-content: center;
+}
+
+.referenceCard {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.referenceCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.referenceCardImage {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.referenceCardTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+    background-color: white;
+}
+
+.referenceCardSector {
+    font-size: 1rem;
+    color: #555;
+    margin: 5px 0;
+    background-color: white;
+
+}
+
+.referenceCardDate {
+    font-size: 0.9rem;
+    color: #999;
+    margin: 10px 0;
+    background-color: white;
+
+}
+
+.referenceCardDetails{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+.referenceCardDetails p{
+    background-color: white;
+}
+hr{
+    margin: 5px;
+}
+
+.referenceCardDetail h3,.referenceCardDetail p{
+    background-color: white;
+    margin: 5px;
+}
+
+.referenceCardIcons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
+    background-color: white;
+
+}
+
+.referenceCardIcons a {
+    color: #555;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+    background-color: white;
+
+}
+
+.referenceCardIcons a:hover {
+    color: #007bff;
+}

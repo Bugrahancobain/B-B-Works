@@ -1,0 +1,15 @@
+{
+    "NavbarLinks": {
+      "home": "Home",
+      "homeTitle": "Home page",
+      "about": "About Us",
+      "references": "References",
+      "blog": "Blog",
+      "ourServices": "Our Services",
+      "contact": "Contact"
+    },
+    "HomePage": {
+      "homeTitle": "Landing page"
+    }
+  }
+  

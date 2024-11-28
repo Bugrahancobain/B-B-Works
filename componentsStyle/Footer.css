@@ -1,0 +1,31 @@
+.footerMain{
+    border-top: 1px solid rgba(69,104,61,255);
+}
+
+.footer{
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.socialIcons{
+    text-align: center;
+    font-size: 24px;
+}
+
+.social:hover{
+    transform: translateY(-5px);
+
+}
+
+.social{
+    margin: 10px;
+    color: black;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+}
+
+.social:active{
+    color: black;
+    text-decoration: none;
+}

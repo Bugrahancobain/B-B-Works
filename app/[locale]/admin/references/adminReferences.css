@@ -1,0 +1,121 @@
+.adminReferencesMain {
+    width: 100%;
+    display: flex;
+    min-height: calc(100vh - 103px);
+}
+
+.adminReferencesContent {
+    padding: 20px;
+    width: 100%;
+    position: relative;
+}
+
+.adminReferencesAddButton {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.adminReferencesPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.adminReferencesPopup input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.adminReferencesPopupActions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.adminReferencesPopupActions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.adminReferencesPopupActions button:first-child {
+    background-color: #007bff;
+    color: white;
+}
+
+.adminReferencesPopupActions button:last-child {
+    background-color: red;
+    color: white;
+}
+
+.adminReferencesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+    gap: 20px;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.adminReferencesCard {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.adminReferencesCard img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.adminReferencesCard a {
+    text-decoration: none;
+    color: #007bff;
+    word-wrap: break-word;
+}
+
+.adminReferencesCardActions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.adminReferencesCardActions button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.adminReferencesCardActions button:first-child {
+    background-color: #007bff;
+    color: white;
+}
+
+.adminReferencesCardActions button:last-child {
+    background-color: red;
+    color: white;
+}

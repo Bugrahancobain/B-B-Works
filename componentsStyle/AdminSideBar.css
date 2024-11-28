@@ -1,0 +1,49 @@
+.AdminSideBarMain{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 200px;
+    min-height: calc(100vh - 103px);
+    height: 100%;
+    background-color: rgb(45, 82, 42);
+}
+
+.adminSideBarLinkDiv{
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(45, 82, 42);
+
+
+}
+
+.adminSideBarLink{
+    color: black;
+    background-color: white;
+    padding: 8px;
+    width: 150px;
+    border-radius: 8px;
+    margin: 10px;
+    border: 1px solid black;
+    transition: all 0.2s ease-in;
+font-weight: 800;
+}
+
+.adminSideBarLink:hover{
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+
+.adminQuickLink{
+    background-color: rgb(155, 1, 1);
+    color: white;
+    border: 1px solid white;
+}
+
+.adminQuickLink:hover{
+    background-color: rgb(194, 56, 56);
+
+}

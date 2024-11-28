@@ -1,0 +1,34 @@
+.companyPageMain{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 50px;
+    align-items: center;
+    text-align: center;
+    justify-items: center;
+}
+
+.companyPageMain div{
+    background-color: white;
+    padding: 25px;
+    border-radius: 18px;
+    width: 150px;
+    height: 75px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.companyPageMain div img {
+    filter: grayscale(100%); 
+    transition: all 0.3s ease;
+    width: 100px;
+    height: 50px;
+    object-fit: contain;
+    align-items: center;
+    text-align: center;
+}
+
+.companyPageMain div img:hover {
+    filter: none
+}

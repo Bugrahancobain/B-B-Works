@@ -1,0 +1,13 @@
+{
+  "NavbarLinks": {
+    "home": "Ana Sayfa",
+      "about": "Hakkımızda",
+      "references": "Referanslarımız",
+      "blog": "Blog",
+      "ourServices": "Hizmetlerimiz",
+      "contact": "İletişim"
+  },
+  "HomePage": {
+    "homeTitle": "Açılış Sayfası"
+  }
+}

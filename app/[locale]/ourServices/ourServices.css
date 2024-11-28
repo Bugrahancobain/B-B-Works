@@ -1,0 +1,189 @@
+.servicesPageMain{
+    width: 100%;
+    min-height: calc(100vh - 100px);
+}
+.servicesHeader{
+    text-align: center;
+    width: 100%;
+    font-size: 30px;
+    gap: 20px;
+    padding: 100px 0;
+    font-size: 30px;
+}
+
+.servicesFirstDiv{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
+}
+
+.servicesImgDiv{
+    position: relative;
+}
+
+.servicesSecondImgDiv{
+    position: absolute;
+    top: 75px;
+    right: 100px;
+    transition: transform 0.1s ease-out;
+}
+
+.servicesFirstContextDiv h2{
+    font-size: 40px;
+    margin-top: 20px;
+}
+
+.servicesFirstContextDiv h4{
+    color: grey;
+    margin-top: 20px;
+
+}
+
+.servicesPageExperiences{
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.servicesPageExperience, .servicesPagePeople{
+    margin: 20px 20px 0 0;
+}
+
+.servicesSlider {
+    margin: 0 auto;
+    width: 80%;
+    position: relative;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.servicesShowDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-right: 1px solid #ddd;
+    height: 400px;
+    margin-bottom: 50px;
+}
+
+.servicesShowDiv div {
+height: 400px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.servicesShowDiv img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.servicesShowDiv h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.servicesShowDiv h4 {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.servicesShowDiv p {
+    font-size: 0.9rem;
+    color: #007bff;
+    cursor: pointer;
+}
+
+/* Slider arrows */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.arrow.prev {
+    left: -30px;
+}
+
+.arrow.next {
+    right: -30px;
+}
+
+.readMoreContainer {
+    height: 100%;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    width: 150px; /* Kapsayıcının genişliğini belirliyoruz */
+}
+
+.readMoreText {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+    margin-right: 8px; /* Ok ve yazı arasında boşluk */
+    white-space: nowrap; /* Metni tek satırda tut */
+}
+
+.arrowIcon {
+    font-size: 16px;
+    transition: all 0.3s ease;
+    transform: translateX(-40px); /* Ok başlangıçta ortalanır */
+    bottom: 0;
+}
+
+.readMoreContainer:hover .readMoreText {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.readMoreContainer:hover .arrowIcon {
+    transform: translateX(8px); /* Yazı göründüğünde ok sağa kayar */
+}
+
+.servicesAboutFirstDiv{
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    padding: 60px;
+    margin-bottom: 50px;
+
+}
+.servicesAboutFirstContextDiv h2{
+    font-size: 40px;
+    margin-top: 20px;
+}
+
+.servicesAboutFirstContextDiv h4{
+    color: grey;
+    margin-top: 20px;
+}
+
+.servicesAboutLink{
+    background-color: #8F6DFF;
+    margin-top: 50px;
+    width: 200px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.servicesAboutLink:hover{
+background-color: #6f46f7;
+}

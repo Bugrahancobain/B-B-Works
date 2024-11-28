@@ -1,0 +1,47 @@
+.navbarMain{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    align-items: center;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+}
+
+.navbarLink{
+    color: black;
+    margin: 0 10px;
+    font-weight: 800;
+    position: relative;
+    text-decoration: none;
+}
+.navbarLinkLogo {
+    color: black;
+    margin: 0 10px;
+    font-weight: 800;
+}
+
+.navbarLink::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Yazının altına çizgi */
+    width: 0; /* Başlangıç genişliği */
+    height: 2px; /* Çizgi kalınlığı */
+    background-color: black; /* Çizgi rengi */
+    transition: width 0.3s ease; /* Yumuşak geçiş efekti */
+}
+
+.navbarLink:hover::after {
+    width: 100%; /* Çizgi tam genişliğe ulaşıyor */
+}
+
+.navbarLink.active::after {
+    width: 100%; /* Aktif sayfa için çizgi sabit */
+}
+.navbarLangOption{
+    font-weight: 800;
+    border-radius: 12px;
+    padding: 8px;
+}

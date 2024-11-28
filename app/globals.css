@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
+
+}
+
+body{
+    background-color: #F9FAFF;
+}
+
+input, textarea, option, select{
+    background-color: #F9FAFF;
+
+}
