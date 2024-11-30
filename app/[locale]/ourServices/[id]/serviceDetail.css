@@ -1,0 +1,35 @@
+.serviceDetailPage {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.serviceDetailHeader {
+    text-align: center;
+}
+
+.serviceDetailHeader img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.serviceDetailContent {
+    width: 80%;
+    max-width: 800px;
+    text-align: left;
+}
+
+.serviceDetailContent h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.serviceDetailContent p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+}

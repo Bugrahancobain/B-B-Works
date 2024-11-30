@@ -5,6 +5,8 @@ import { realtimeDb } from "../../../firebase";
 import { ref, onValue } from "firebase/database";
 import { FaChevronDown } from "react-icons/fa";
 import "./blog.css";
+import Link from "next/link";
+
 
 function BlogPage({ params }) {
     const [blogs, setBlogs] = useState([]);
@@ -34,17 +36,20 @@ function BlogPage({ params }) {
                 <FaChevronDown />
             </div>
             <div className="blogPageMain">
+
                 <div className="blogMain">
-                    {blogs.map((blog) => (
+                    {blogs.slice(0, 3).map((blog) => (
                         <div key={blog.id} className="blogCard">
-                            <img src={blog.image} alt={blog.title[locale]} />
-                            <div className="blogCardContent">
-                                <h3>{blog.title[locale]}</h3>
-                                <p>{blog.content?.[locale]?.substring(0, 50)}...</p>
-                                <div>
-                                    <span>{blog.dateAdded}</span>
+                            <Link style={{ color: "black", width: "100%" }} href={`/${locale}/blog/${blog.id}`}>
+                                <img src={blog.image} alt={blog.title[locale]} />
+                                <div className="blogCardContent">
+                                    <h3>{blog.title[locale]}</h3>
+                                    <p>{blog.content?.[locale]?.substring(0, 50)}...</p>
+                                    <div>
+                                        <span>{blog.dateAdded}</span>
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                         </div>
                     ))}
                 </div>
@@ -54,13 +59,16 @@ function BlogPage({ params }) {
                     <div className="blogSidebarSection">
                         <h3>Recent Posts</h3>
                         {blogs.slice(0, 2).map((blog) => (
-                            <div key={blog.id} className="blogSidebarCard">
-                                <img src={blog.image} alt={blog.title[locale]} />
-                                <div>
-                                    <h4>{blog.title[locale]}</h4>
-                                    <span>{blog.dateAdded}</span>
+                            <Link key={blog.id} style={{ color: "black", width: "100%" }} href={`/${locale}/blog/${blog.id}`}>
+
+                                <div className="blogSidebarCard">
+                                    <img src={blog.image} alt={blog.title[locale]} />
+                                    <div>
+                                        <h4>{blog.title[locale]}</h4>
+                                        <span>{blog.dateAdded}</span>
+                                    </div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                     <div className="blogSidebarBanner">
@@ -71,7 +79,7 @@ function BlogPage({ params }) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

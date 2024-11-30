@@ -1,0 +1,61 @@
+.aboutPageMain {
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.aboutHeader {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+}
+
+.aboutHeader h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.aboutHeader p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.aboutMissionSection {
+    display: flex;
+    padding: 40px;
+    gap: 20px;
+    align-items: center;
+}
+
+.missionImage img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.missionContent h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.aboutTeamSection {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.teamGrid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.teamMember {
+    text-align: center;
+}
+
+.teamMember img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}

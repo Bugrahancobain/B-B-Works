@@ -1,5 +1,6 @@
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
+import ScrollToTopButton from "../../components/ScrollToTopButton";
 import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
@@ -24,6 +25,7 @@ export default async function RootLayout({ children, params }) {
           <div>
             <Navbar locale={locale} />
             {children}
+            <ScrollToTopButton />
             <Footer />
           </div>
         </NextIntlClientProvider>

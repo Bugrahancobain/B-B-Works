@@ -34,8 +34,9 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: row; /* Resmi ve içeriği yan yana tutar */
-    width: 66%;
+    width: 75%;
     gap: 30px;
+    cursor: pointer;
     background-color: white;
 }
 
@@ -122,6 +123,7 @@
     background-color: white;
     margin-bottom: 10px;
     width: 100%;
+    cursor: pointer;
 }
 
 .blogSidebarCard img {

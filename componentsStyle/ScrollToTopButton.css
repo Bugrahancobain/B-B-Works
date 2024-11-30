@@ -1,0 +1,30 @@
+.scrollToTopButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #ff2e57;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000; /* Üstte kalması için */
+  }
+  
+  .scrollToTopButton.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .scrollToTopButton:hover {
+    background-color: #d22e47;
+    transform: scale(1.1); /* Hover sırasında hafif büyütme efekti */
+  }

@@ -5,11 +5,15 @@ import { realtimeDb } from "../../../firebase";
 import { ref, onValue } from "firebase/database";
 import { FaTwitter, FaFacebook, FaInstagram, FaGlobe, FaChevronDown } from "react-icons/fa";
 import "./references.css";
+import Link from "next/link";
+import { useRouter } from "next/navigation"; // useRouter ekleniyor
 
 function ReferencesPage({ params }) {
     const [references, setReferences] = useState([]);
     const resolvedParams = React.use(params); // `params` çözülüyor
     const locale = resolvedParams.locale || "en"; // Varsayılan dil 'en'
+
+    const router = useRouter(); // useRouter hook'u tanımlandı
     // Firebase'den referansları çekme
     useEffect(() => {
         const referencesRef = ref(realtimeDb, "references");
@@ -31,7 +35,12 @@ function ReferencesPage({ params }) {
             </div>
             <div className="referencesGrid">
                 {references.map((reference) => (
-                    <div key={reference.id} className="referenceCard">
+                    <div
+                        key={reference.id}
+                        className="referenceCard"
+                        onClick={() => router.push(`/${locale}/references/${reference.id}`)}
+                        style={{ cursor: "pointer" }}
+                    >
                         <img
                             src={reference.image}
                             alt={reference.companyName}

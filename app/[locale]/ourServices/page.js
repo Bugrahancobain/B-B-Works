@@ -9,15 +9,35 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
-import Company from "../../../components/company";
+import Company from "../../../components/Company";
 
 function Page({ params }) {
     const [offset, setOffset] = useState({ x: 0, y: 0 });
     const [referenceCount, setReferenceCount] = useState(0);
     const [services, setServices] = useState([]);
+    const [isVisible, setIsVisible] = useState(false);
 
     const resolvedParams = React.use(params); // `params` çözülüyor
     const locale = resolvedParams.locale || "en"; // Varsayılan dil 'en'
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const exsDiv = document.querySelector(".servicesPageExperiences");
+
+            if (exsDiv) {
+                const rectBars = exsDiv.getBoundingClientRect();
+                if (rectBars.top < window.innerHeight - 100 && rectBars.bottom >= 0) {
+                    setIsVisible(true);
+                }
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
     // Fare hareketiyle resimlerin ters yönde hareket etmesi
     useEffect(() => {
         const handleMouseMove = (e) => {
@@ -119,13 +139,13 @@ function Page({ params }) {
                         <div className="servicesPageExperience">
                             <h4>Experience</h4>
                             <h2>
-                                <CountUp start={0} end={referenceCount} duration={2} />+
+                                {isVisible ? <CountUp start={0} end={referenceCount} duration={2} /> : 0}+
                             </h2>
                         </div>
                         <div className="servicesPagePeople">
                             <h4>People</h4>
                             <h2>
-                                <CountUp start={0} end={peopleCount} duration={2} />+
+                                {isVisible ? <CountUp start={0} end={peopleCount} duration={2} /> : 0}+
                             </h2>
                         </div>
                     </div>
@@ -136,26 +156,29 @@ function Page({ params }) {
                 <Slider {...sliderSettings}>
                     {services.map((service) => (
                         <div key={service.id} className="servicesShowDiv">
-                            <div
-                                style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    justifyContent: "space-between",
-                                    alignItems: "center",
-                                    position: "relative",
-                                    height: "100%"
-                                }}
-                            >
-                                <img src={service.image} alt={service.title[locale]} />
-                                <div>
-                                    <h3>{service.title[locale]}</h3>
-                                    <h4>{service.shortDescription[locale]}</h4>
+                            <Link href={`/${locale}/ourServices/${service.id}`}>
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        justifyContent: "space-between",
+                                        alignItems: "center",
+                                        position: "relative",
+                                        height: "100%",
+                                        cursor: "pointer", // Tıklanabilir olduğunu göstermek için
+                                    }}
+                                >
+                                    <img src={service.image} alt={service.title[locale]} />
+                                    <div>
+                                        <h3>{service.title[locale]}</h3>
+                                        <h4>{service.shortDescription[locale]}</h4>
+                                    </div>
+                                    <div className="readMoreContainer">
+                                        <span className="readMoreText">Read More</span>
+                                        <span className="arrowIcon">→</span>
+                                    </div>
                                 </div>
-                                <div className="readMoreContainer">
-                                    <span className="readMoreText">Read More</span>
-                                    <span className="arrowIcon">→</span>
-                                </div>
-                            </div>
+                            </Link>
                         </div>
                     ))}
                 </Slider>
