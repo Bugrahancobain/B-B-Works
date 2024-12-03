@@ -189,7 +189,7 @@ function Page({ params }) {
                 <div className="adminServicesGrid">
                     {services.map((service) => (
                         <div key={service.id} className="adminServicesCard">
-                            <img src={service.image} alt={locale === "en" ? service.title.en : service.title.tr} />
+                            <img src={service.image} alt={`B&B_${locale === "en" ? service.title.en : service.title.tr}`} />
                             <h3>{locale === "en" ? service.title.en : service.title.tr}</h3>
                             <div dangerouslySetInnerHTML={{ __html: service.shortDescription?.[locale]?.substring(0, 50) + "..." }} />
                             <div className="adminServicesCardActions">

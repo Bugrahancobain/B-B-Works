@@ -186,7 +186,7 @@ function Page({ params }) {
                 <div className="adminBlogGrid">
                     {blogs.map((blog) => (
                         <div key={blog.id} className="adminBlogCard">
-                            <img src={blog.image} alt={blog.title.en} />
+                            <img src={blog.image} alt={`B&B_${blog.title.en}`} />
                             <h3>{locale === "en" ? blog.title.en : blog.title.tr}</h3>
                             <p>{blog.dateAdded}</p>
                             <div className="adminBlogCardActions">

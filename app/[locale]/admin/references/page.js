@@ -217,7 +217,7 @@ function Page({ params }) {
                 <div className="adminReferencesGrid">
                     {references.map((reference) => (
                         <div key={reference.id} className="adminReferencesCard">
-                            <img src={reference.image} alt={reference.companyName} />
+                            <img src={reference.image} alt={`B&B_${reference.companyName}`} />
                             <h3>{reference.companyName}</h3>
                             <p>{locale === "en" ? reference.sector.en : reference.sector.tr}</p>
                             <p>{reference.dateAdded}</p>

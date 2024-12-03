@@ -11,19 +11,19 @@ function company() {
     return (
         <div className="companyPageMain">
             <div>
-                <Image src={Shopify} alt="Shopify" />
+                <Image src={Shopify} alt="B&B_Shopify" />
             </div>
             <div>
-                <Image src={GoogleADS} alt="Google ADS" />
+                <Image src={GoogleADS} alt="B&B_Google ADS" />
             </div>
             <div>
-                <Image src={Meta} alt="Meta" />
+                <Image src={Meta} alt="B&B_Meta" />
             </div>
             <div>
-                <Image src={ShopifyPlus} alt="Shopify Plus" />
+                <Image src={ShopifyPlus} alt="B&B_Shopify Plus" />
             </div>
             <div>
-                <Image src={Next} alt="Next.js" />
+                <Image src={Next} alt="B&B_Next.js" />
             </div>
         </div>
     );
