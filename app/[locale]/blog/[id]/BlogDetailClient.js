@@ -11,7 +11,6 @@ function BlogDetailClient({ blog, blogs, locale }) {
 
     const [likes, setLikes] = React.useState(0);
     const [isLiked, setIsLiked] = React.useState(false);
-
     const currentUrl = typeof window !== "undefined" ? window.location.href : "";
 
     // Mevcut blogun indeksini bul
@@ -48,9 +47,9 @@ function BlogDetailClient({ blog, blogs, locale }) {
 
     return (
         <div className="blogDetailPage">
-            {/* Üst Kısım: Blog Detayları */}
+            {/* Blog Detayları */}
             <div className="blogDetailImageHeader">
-                <img className="blogDetailsBanner" src={blog.image} alt={`B&B_${blog.title[locale]}`} />
+                <img className="blogDetailsBanner" src={blog.image} alt={blog.title[locale]} />
                 <div className="blogDetailHeaderDiv">
                     <h1>{blog.title[locale]}</h1>
                     <ul>
@@ -65,50 +64,106 @@ function BlogDetailClient({ blog, blogs, locale }) {
                 </div>
             </div>
             <div className="blogDetailContent">
-                <div
-                    style={{ lineHeight: "1.5" }}
-                    dangerouslySetInnerHTML={{ __html: blog.content?.[locale] }}
-                />
-
+                <div dangerouslySetInnerHTML={{ __html: blog.content?.[locale] }} />
                 <div className="social-container">
                     <div className="like-button" onClick={handleLike}>
                         <FaHeart className={`heart-icon ${isLiked ? "liked" : ""}`} />
                         <span className="like-count">{likes}</span>
-                        <span>{t("likeButton")}</span>
                     </div>
-
                     <div className="share-buttons">
-                        <button onClick={() => handleShare("twitter")} className="share-button twitter">
+                        <button className="share-button twitter" onClick={() => handleShare("twitter")} aria-label="Share on Twitter">
                             <FaTwitter />
                         </button>
-                        <button onClick={() => handleShare("facebook")} className="share-button facebook">
+                        <button className="share-button facebook" onClick={() => handleShare("facebook")} aria-label="Share on Facebook">
                             <FaFacebook />
                         </button>
-                        <button onClick={() => handleShare("email")} className="share-button email">
+                        <button className="share-button email" onClick={() => handleShare("email")} aria-label="Share via Email">
                             <FaEnvelope />
                         </button>
-                        <button onClick={() => handleShare("link")} className="share-button link">
+                        <button className="share-button link" onClick={() => handleShare("link")} aria-label="Copy Link">
                             <FaLink />
                         </button>
                     </div>
                 </div>
             </div>
-
+            {/* Önceki ve Sonraki Blog */}
             <div className="previousNextBlogContainer">
                 <div className="previousNextBlogContent">
                     {previousBlog && (
                         <div className="previousBlog">
-                            <Link href={`/${locale}/blog/${previousBlog.id}`}>
-                                <img src={previousBlog.image} alt={`B&B_${previousBlog.title[locale]}`} />
-                                <h4>{previousBlog.title[locale]}</h4>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    textAlign: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <FaChevronLeft />
+                                <h3>{t("previousPost")}</h3>
+                            </div>
+                            <Link
+                                href={`/${locale}/blog/${previousBlog.id}`}
+                                className="blogLink"
+                            >
+                                <img
+                                    src={previousBlog.image}
+                                    alt={`B&B_${previousBlog.title[locale]}`}
+                                    className="blogImage"
+                                />
+                                <div>
+                                    <h4 className="blogTitle">
+                                        {previousBlog.title[locale]}
+                                    </h4>
+                                    <div
+                                        className="blogExcerpt"
+                                        dangerouslySetInnerHTML={{
+                                            __html: previousBlog.content?.[locale]?.substring(
+                                                0,
+                                                50
+                                            ) + "...",
+                                        }}
+                                    />
+                                </div>
                             </Link>
                         </div>
                     )}
                     {nextBlog && (
                         <div className="nextBlog">
-                            <Link href={`/${locale}/blog/${nextBlog.id}`}>
-                                <img src={nextBlog.image} alt={`B&B_${nextBlog.title[locale]}`} />
-                                <h4>{nextBlog.title[locale]}</h4>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    textAlign: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <h3>{t("nextPost")}</h3>
+                                <FaChevronRight />
+                            </div>
+                            <Link
+                                href={`/${locale}/blog/${nextBlog.id}`}
+                                className="blogLink"
+                            >
+                                <img
+                                    src={nextBlog.image}
+                                    alt={`B&B_${nextBlog.title[locale]}`}
+                                    className="blogImage"
+                                />
+                                <div>
+                                    <h4 className="blogTitle">
+                                        {nextBlog.title[locale]}
+                                    </h4>
+                                    <div
+                                        className="blogExcerpt"
+                                        dangerouslySetInnerHTML={{
+                                            __html: nextBlog.content?.[locale]?.substring(
+                                                0,
+                                                50
+                                            ) + "...",
+                                        }}
+                                    />
+                                </div>
                             </Link>
                         </div>
                     )}

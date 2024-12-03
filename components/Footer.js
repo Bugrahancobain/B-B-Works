@@ -66,7 +66,7 @@ function Footer({ params }) {
                         {t("contact")}
                     </Link>
                 </div>
-                <Link href={`/${locale}/contract`}>
+                <Link href={`/${locale}/contact`}>
                     <div className="footerContractBtn">{t("contactWithUs")}</div>
                 </Link>
             </div>

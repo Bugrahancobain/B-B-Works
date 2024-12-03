@@ -2,42 +2,40 @@ import React from "react";
 import { adminRTDB } from "../../../../firebaseAdmin";
 import BlogDetailClient from "./BlogDetailClient";
 
-export async function fetchBlogData(id) {
+export async function fetchBlogsAndCurrent(id) {
     try {
-        // Tekil blogu al
-        const blogSnapshot = await adminRTDB.ref(`blogs/${id}`).once("value");
-        const blog = blogSnapshot.val();
-
-        // Tüm blogları al
-        const blogsSnapshot = await adminRTDB.ref("blogs").once("value");
-        const blogsData = blogsSnapshot.val();
-        const blogs = blogsData
-            ? Object.entries(blogsData).map(([id, blog]) => ({ id, ...blog }))
+        // Tüm blogları ve mevcut blogu çek
+        const snapshot = await adminRTDB.ref("blogs").once("value");
+        const data = snapshot.val();
+        const blogs = data
+            ? Object.entries(data).map(([id, blog]) => ({ id, ...blog }))
             : [];
 
-        // Blogları tarihe göre sıralama
+        // Mevcut blogu bulun
+        const currentBlog = blogs.find((blog) => blog.id === id);
+
+        // Tarihe göre sıralayın
         blogs.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
 
-        return { blog, blogs };
+        return { blogs, currentBlog };
     } catch (error) {
-        console.error("Error fetching blog data:", error);
-        return { blog: null, blogs: [] };
+        console.error("Error fetching blogs:", error);
+        return { blogs: [], currentBlog: null };
     }
 }
 
 export default async function BlogDetailPage({ params }) {
-    const { id } = params; // Blog ID
-    const locale = params?.locale || "en"; // Varsayılan dil
-    const { blog, blogs } = await fetchBlogData(id);
+    const { id, locale } = params;
+    const { blogs, currentBlog } = await fetchBlogsAndCurrent(id);
 
-    // Eğer blog yoksa 404 dönebiliriz
-    if (!blog) {
-        return <div>Blog not found</div>;
+    if (!currentBlog) {
+        // Eğer blog bulunamazsa 404 veya yönlendirme yapabilirsiniz
+        return <p>Blog not found.</p>;
     }
 
     return (
         <BlogDetailClient
-            blog={blog}
+            blog={currentBlog}
             blogs={blogs}
             locale={locale}
         />

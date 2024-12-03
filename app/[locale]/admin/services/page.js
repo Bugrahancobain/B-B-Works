@@ -39,7 +39,13 @@ function Page({ params }) {
         const newServiceKey = editMode ? editServiceId : Date.now().toString();
         const servicesRef = ref(realtimeDb, `services/${newServiceKey}`);
 
-        set(servicesRef, newService)
+        // dateAdded kontrolü ve varsayılan değer atanması
+        const updatedService = {
+            ...newService,
+            dateAdded: newService.dateAdded || new Date().toISOString(), // Eğer `dateAdded` yoksa şu anki tarihi ekle
+        };
+
+        set(servicesRef, updatedService)
             .then(() => {
                 setPopupOpen(false);
                 setNewService({

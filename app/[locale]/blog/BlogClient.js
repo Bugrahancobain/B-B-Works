@@ -9,23 +9,21 @@ import { useTranslations } from "next-intl";
 export default function BlogClient({ blogs, locale }) {
     const t = useTranslations("BlogPage");
 
-    // Normalize ve render sırasında farklılık oluşmaması için veriyi temizleyin
     const formatDate = (dateString) => {
         try {
-            return new Intl.DateTimeFormat(locale, { dateStyle: "medium" }).format(new Date(dateString));
+            return new Date(dateString).toISOString().split("T")[0];
         } catch (error) {
             console.warn("Invalid date format:", dateString);
-            return ""; // Hatalı tarih formatı için boş döndürün
+            return "";
         }
     };
 
     const sanitizeContent = (content) => {
-        return content ? content.trim().substring(0, 50) + "..." : ""; // İçeriği normalize edin
+        return content ? content.trim().substring(0, 50) + "..." : "";
     };
 
     return (
         <div>
-            {/* Main Content */}
             <div className="blogPageHeaderDiv">
                 <h1>{t("header")}</h1>
                 <FaChevronDown />
@@ -39,12 +37,12 @@ export default function BlogClient({ blogs, locale }) {
                                 style={{ color: "black", width: "800px" }}
                                 href={`/${locale}/blog/${blog.id}`}
                             >
-                                <img src={blog.image} alt={`B&B_${blog.title[locale]}`} />
+                                <img src={blog.image} alt={`B&B_${blog.title[locale] || "default"}`} />
                                 <div className="blogCardContent">
                                     <h3>{blog.title[locale]}</h3>
                                     <div
                                         dangerouslySetInnerHTML={{
-                                            __html: sanitizeContent(blog.content?.[locale])
+                                            __html: sanitizeContent(blog.content?.[locale]),
                                         }}
                                     />
                                     <div>
@@ -56,7 +54,6 @@ export default function BlogClient({ blogs, locale }) {
                     ))}
                 </div>
 
-                {/* Sidebar */}
                 <div className="blogSidebar">
                     <div className="blogSidebarSection">
                         <h3>{t("recentPosts")}</h3>
@@ -67,7 +64,7 @@ export default function BlogClient({ blogs, locale }) {
                                 href={`/${locale}/blog/${blog.id}`}
                             >
                                 <div className="blogSidebarCard">
-                                    <img src={blog.image} alt={`B&B_${blog.title[locale]}`} />
+                                    <img src={blog.image} alt={`B&B_${blog.title[locale] || "default"}`} />
                                     <div>
                                         <h4>{blog.title[locale]}</h4>
                                         <span>{formatDate(blog.dateAdded)}</span>
