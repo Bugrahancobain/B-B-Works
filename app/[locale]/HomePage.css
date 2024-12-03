@@ -50,7 +50,10 @@ background-color: #6f46f7;
     display: flex;
     justify-content: space-evenly;
     text-align: center;
+    align-items: start;
     gap: 100px;
+    padding: 0 50px;
+    width: 100%;
 }
 .homePageServicesCardBox{
   width: 100%;

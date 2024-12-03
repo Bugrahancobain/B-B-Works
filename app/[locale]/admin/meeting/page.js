@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import AdminSidebar from "../../../../components/AdminSidebar";
 import { ref, onValue, remove, update } from "firebase/database";
 import { realtimeDb } from "../../../../firebase";
+import { Editor } from "@tinymce/tinymce-react"; // TinyMCE Editörü
 import "./adminContact.css";
 
 function AdminContactPage({ params }) {
@@ -148,13 +149,26 @@ function AdminContactPage({ params }) {
                                     setEditMeeting({ ...editMeeting, topic: e.target.value })
                                 }
                             />
-                            <textarea
-                                placeholder="Ek Bilgiler"
+                            <h4>Ek Bilgiler</h4>
+                            <Editor
+                                apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
                                 value={editMeeting?.extraInfo || ""}
-                                onChange={(e) =>
-                                    setEditMeeting({ ...editMeeting, extraInfo: e.target.value })
+                                onEditorChange={(content) =>
+                                    setEditMeeting({ ...editMeeting, extraInfo: content })
                                 }
-                            ></textarea>
+                                init={{
+                                    height: 200,
+                                    menubar: false,
+                                    plugins: [
+                                        "advlist autolink lists link image charmap print preview anchor",
+                                        "searchreplace visualblocks code fullscreen",
+                                        "insertdatetime media table paste code help wordcount",
+                                    ],
+                                    toolbar:
+                                        "undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code",
+                                }}
+                            />
+
                             <div className="dateTimePicker">
                                 <input
                                     type="date"

@@ -1,61 +1,76 @@
 .aboutPageMain {
-    font-family: Arial, sans-serif;
-    color: #333;
-    line-height: 1.6;
-}
-
-.aboutHeader {
-    text-align: center;
-    padding: 50px 20px;
-    background-color: #f8f9fa;
-}
-
-.aboutHeader h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-.aboutHeader p {
-    font-size: 1.2rem;
-    color: #555;
-}
-
-.aboutMissionSection {
+    padding: 20px;
     display: flex;
-    padding: 40px;
-    gap: 20px;
-    align-items: center;
+    flex-direction: column;
+    width: 100%;
 }
 
-.missionImage img {
-    max-width: 100%;
-    border-radius: 10px;
-}
-
-.missionContent h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.aboutTeamSection {
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.teamGrid {
+.aboutPageHeaderDiv{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 20px;
-}
-
-.teamMember {
     text-align: center;
+    align-items: center;
+    gap: 20px;
+    padding: 100px 0;
+    font-size: 30px;
 }
 
-.teamMember img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
+.aboutFirstDiv{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.aboutFirstContextDivh2{
+    font-size: 40px;
+    margin-top: 20px;
+}
+
+.aboutFirstContextDivh4{
+    color: grey;
+    margin-top: 20px;
+}
+
+.aboutPageTopCommit{
+    width: 75%;
+    margin-top: 30px;
+}
+
+.aboutPageTopCommit h4{
+    color: grey;
+}
+.hrClass{
+    color: rgba(128, 128, 128, 0.5);
+    margin: auto;
+}
+.aboutPageTopCommitSecond{
+    margin-top: 30px;
+}
+.aboutPageTopCommitFirst, .aboutPageTopCommitSecond{
+    display: flex;
+    align-items: center;
+    height: 70px;
+}
+
+.aboutPageTopCommitFirst img, .aboutPageTopCommitSecond img{
+    height: 100%;
+    margin: auto 0;
+}
+
+.aboutPageServicesLink{
+    background-color: #0C0367;
+    margin-top: 30px;
+    width: 200px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.aboutPageServicesLink:hover{
+    background-color: #291E97;
 }

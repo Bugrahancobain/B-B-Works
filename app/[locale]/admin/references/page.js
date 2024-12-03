@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import AdminSidebar from "../../../../components/AdminSidebar";
+import { Editor } from "@tinymce/tinymce-react"; // TinyMCE Editörü
 import { realtimeDb } from "../../../../firebase";
 import { ref, set, onValue, remove } from "firebase/database";
 import "./adminReferences.css";
@@ -14,10 +15,11 @@ function Page({ params }) {
     const [isPopupOpen, setPopupOpen] = useState(false);
     const [editMode, setEditMode] = useState(false);
     const [editReferenceId, setEditReferenceId] = useState(null);
+    const [selectedLanguage, setSelectedLanguage] = useState("en"); // Dil seçimi
     const [newReference, setNewReference] = useState({
         image: "",
         companyName: "",
-        sector: { en: "", tr: "" }, // Sektör bilgisi dillere ayrıldı
+        sector: { en: "", tr: "" },
         dateAdded: "",
         website: "https://",
         instagram: "",
@@ -43,9 +45,11 @@ function Page({ params }) {
         const newReferenceKey = editMode ? editReferenceId : Date.now().toString();
         const referencesRef = ref(realtimeDb, `references/${newReferenceKey}`);
 
+        const currentDate = new Date().toISOString(); // ISO 8601 formatında tarih
+
         const referenceToSave = {
             ...newReference,
-            dateAdded: editMode ? newReference.dateAdded : new Date().toLocaleDateString("tr-TR"),
+            dateAdded: editMode ? newReference.dateAdded : currentDate, // Tarihi ISO 8601 formatında kaydet
         };
 
         set(referencesRef, referenceToSave)
@@ -54,7 +58,7 @@ function Page({ params }) {
                 setNewReference({
                     image: "",
                     companyName: "",
-                    sector: { en: "", tr: "" }, // Boş yapıyı sıfırla
+                    sector: { en: "", tr: "" },
                     dateAdded: "",
                     website: "https://",
                     instagram: "",
@@ -90,9 +94,7 @@ function Page({ params }) {
 
     return (
         <div className="adminReferencesMain">
-            <div>
-                <AdminSidebar locale={locale} />
-            </div>
+            <AdminSidebar locale={locale} />
             <div className="adminReferencesContent">
                 <button
                     className="adminReferencesAddButton"
@@ -133,17 +135,15 @@ function Page({ params }) {
                         />
                         <input
                             type="text"
-                            placeholder="Sektör (EN)"
-                            value={newReference.sector.en}
-                            onChange={(e) => setNewReference({ ...newReference, sector: { ...newReference.sector, en: e.target.value } })}
+                            placeholder={`Sektör (${selectedLanguage.toUpperCase()})`}
+                            value={newReference.sector[selectedLanguage]}
+                            onChange={(e) =>
+                                setNewReference({
+                                    ...newReference,
+                                    sector: { ...newReference.sector, [selectedLanguage]: e.target.value },
+                                })
+                            }
                         />
-                        <input
-                            type="text"
-                            placeholder="Sektör (TR)"
-                            value={newReference.sector.tr}
-                            onChange={(e) => setNewReference({ ...newReference, sector: { ...newReference.sector, tr: e.target.value } })}
-                        />
-                        {/* Not: Yeni diller eklenecekse burada Sektör inputlarını çoğaltın */}
                         <input
                             type="text"
                             placeholder="Website"
@@ -169,26 +169,42 @@ function Page({ params }) {
                             onChange={(e) => setNewReference({ ...newReference, facebook: e.target.value })}
                         />
                         <input
-                            type="text"
+                            type="email"
                             placeholder="Email"
                             value={newReference.email}
                             onChange={(e) => setNewReference({ ...newReference, email: e.target.value })}
                         />
-                        <textarea
-                            placeholder="Detaylar (EN)"
-                            value={newReference.details.en}
-                            onChange={(e) =>
-                                setNewReference({ ...newReference, details: { ...newReference.details, en: e.target.value } })
+                        <select
+                            value={selectedLanguage}
+                            onChange={(e) => setSelectedLanguage(e.target.value)}
+                            className="languageSelector"
+                        >
+                            <option value="en">English</option>
+                            <option value="tr">Türkçe</option>
+                        </select>
+                        <h4>Detaylar ({selectedLanguage.toUpperCase()})</h4>
+                        <Editor
+                            apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
+                            value={newReference.details[selectedLanguage]}
+                            onEditorChange={(content) =>
+                                setNewReference({
+                                    ...newReference,
+                                    details: { ...newReference.details, [selectedLanguage]: content },
+                                })
                             }
+                            init={{
+                                height: 200,
+                                menubar: false,
+                                plugins: [
+                                    "advlist autolink lists link image charmap print preview anchor",
+                                    "searchreplace visualblocks code fullscreen",
+                                    "insertdatetime media table paste code help wordcount",
+                                ],
+                                toolbar:
+                                    "undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code",
+                            }}
                         />
-                        <textarea
-                            placeholder="Detaylar (TR)"
-                            value={newReference.details.tr}
-                            onChange={(e) =>
-                                setNewReference({ ...newReference, details: { ...newReference.details, tr: e.target.value } })
-                            }
-                        />
-                        {/* Not: Yeni diller eklenecekse burada Detaylar inputlarını çoğaltın */}
+
                         <div className="adminReferencesPopupActions">
                             <button onClick={handleAddReference}>
                                 {editMode ? "Kaydet" : "Ekle"}

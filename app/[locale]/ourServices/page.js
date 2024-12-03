@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import "./ourServices.css";
 import { FaChevronDown, FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -10,6 +11,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 import Company from "../../../components/Company";
+import { useTranslations } from "next-intl";
 
 function Page({ params }) {
     const [offset, setOffset] = useState({ x: 0, y: 0 });
@@ -17,8 +19,10 @@ function Page({ params }) {
     const [services, setServices] = useState([]);
     const [isVisible, setIsVisible] = useState(false);
 
-    const resolvedParams = React.use(params); // `params` çözülüyor
-    const locale = resolvedParams.locale || "en"; // Varsayılan dil 'en'
+    const t = useTranslations("OurServicesPage");
+    const resolvedParams = React.use(params);
+    const locale = resolvedParams?.locale || "en"; // Varsayılan dil 'en'
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -38,7 +42,7 @@ function Page({ params }) {
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
-    // Fare hareketiyle resimlerin ters yönde hareket etmesi
+
     useEffect(() => {
         const handleMouseMove = (e) => {
             const centerX = window.innerWidth / 2;
@@ -57,7 +61,6 @@ function Page({ params }) {
         };
     }, []);
 
-    // Firebase'den "references" verilerini çekmek
     useEffect(() => {
         const referencesRef = ref(realtimeDb, "references");
         onValue(referencesRef, (snapshot) => {
@@ -69,7 +72,6 @@ function Page({ params }) {
 
     const peopleCount = referenceCount * 23;
 
-    // Firebase'den "services" verilerini çekmek
     useEffect(() => {
         const servicesRef = ref(realtimeDb, "services");
         onValue(servicesRef, (snapshot) => {
@@ -81,7 +83,6 @@ function Page({ params }) {
         });
     }, []);
 
-    // Slider ayarları
     const sliderSettings = {
         dots: true,
         infinite: true,
@@ -97,7 +98,7 @@ function Page({ params }) {
     return (
         <div className="servicesPageMain">
             <div className="servicesHeader">
-                <h1>Services</h1>
+                <h1>{t("servicesHeader")}</h1>
                 <FaChevronDown />
             </div>
             <div className="servicesFirstDiv">
@@ -130,20 +131,18 @@ function Page({ params }) {
                     </div>
                 </div>
                 <div className="servicesFirstContextDiv">
-                    <h3>Our Services</h3>
-                    <h2>Our Experts are Ready to Help</h2>
-                    <h4>
-                        Dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-                    </h4>
+                    <h3>{t("ourServices")}</h3>
+                    <h2>{t("expertsReady")}</h2>
+                    <h4>{t("description")}</h4>
                     <div className="servicesPageExperiences">
                         <div className="servicesPageExperience">
-                            <h4>Experience</h4>
+                            <h4>{t("experience")}</h4>
                             <h2>
                                 {isVisible ? <CountUp start={0} end={referenceCount} duration={2} /> : 0}+
                             </h2>
                         </div>
                         <div className="servicesPagePeople">
-                            <h4>People</h4>
+                            <h4>{t("people")}</h4>
                             <h2>
                                 {isVisible ? <CountUp start={0} end={peopleCount} duration={2} /> : 0}+
                             </h2>
@@ -151,7 +150,6 @@ function Page({ params }) {
                     </div>
                 </div>
             </div>
-            {/* Hizmetler Slider */}
             <div className="servicesSlider">
                 <Slider {...sliderSettings}>
                     {services.map((service) => (
@@ -165,16 +163,16 @@ function Page({ params }) {
                                         alignItems: "center",
                                         position: "relative",
                                         height: "100%",
-                                        cursor: "pointer", // Tıklanabilir olduğunu göstermek için
+                                        cursor: "pointer",
                                     }}
                                 >
                                     <img src={service.image} alt={service.title[locale]} />
                                     <div>
                                         <h3>{service.title[locale]}</h3>
-                                        <h4>{service.shortDescription[locale]}</h4>
+                                        <div style={{ color: "grey" }} dangerouslySetInnerHTML={{ __html: service.shortDescription?.[locale]?.substring(0, 100) + "..." }} />
                                     </div>
                                     <div className="readMoreContainer">
-                                        <span className="readMoreText">Read More</span>
+                                        <span className="readMoreText">{t("readMore")}</span>
                                         <span className="arrowIcon">→</span>
                                     </div>
                                 </div>
@@ -184,17 +182,12 @@ function Page({ params }) {
                 </Slider>
             </div>
             <div className="servicesAboutFirstDiv">
-
                 <div className="servicesAboutFirstContextDiv">
-                    <h3>Who We Are</h3>
-                    <h2>Our Experts are Ready to Help</h2>
-                    <h4>
-                        Dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-                    </h4>
+                    <h3>{t("whoWeAre")}</h3>
+                    <h2>{t("expertsReady")}</h2>
+                    <h4>{t("description")}</h4>
                     <Link href={`/${locale}/aboutUs`}>
-                        <div className="servicesAboutLink">
-                            Discover Us
-                        </div>
+                        <div className="servicesAboutLink">{t("discoverUs")}</div>
                     </Link>
                 </div>
                 <div className="servicesAboutImgDiv">
@@ -220,7 +213,6 @@ function Page({ params }) {
     );
 }
 
-// Özel slider okları
 function CustomNextArrow(props) {
     const { onClick } = props;
     return (

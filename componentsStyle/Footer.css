@@ -1,5 +1,7 @@
 .footerMain{
-    border-top: 1px solid rgba(69,104,61,255);
+    border-top: 1px solid #D0D3DC;
+    background-color: #0C0833;
+    color: white;
 }
 
 .footer{
@@ -10,6 +12,7 @@
 .socialIcons{
     text-align: center;
     font-size: 24px;
+    margin: 10px auto;
 }
 
 .social:hover{
@@ -19,13 +22,87 @@
 
 .social{
     margin: 10px;
-    color: black;
     text-decoration: none;
     transition: all 0.3s ease;
-
+    color: white;
 }
 
 .social:active{
-    color: black;
+    color: white;
     text-decoration: none;
+}
+
+.footerContractBtn{
+    background-color: #ff2e57;
+    margin-top: 30px;
+    width: 200px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.footerContractBtn:hover{
+    background-color: #f4123f;
+}
+
+.footerAdressDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.footerLinks{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.footerLinks a{
+    color: white;
+    width: max-content;
+}
+
+.footerNav{
+    display: flex;
+    justify-content: space-around;
+    height: 350px;
+    padding: 50px 0; 
+    text-align: start;
+}
+
+.hrClass{
+    color: rgba(128, 128, 128, 0.5);
+    margin: auto;
+}
+
+.footerNav h3{
+    color: white;
+}
+
+.footerNavbarLink{
+    color: white;
+    position: relative;
+    text-decoration: none;
+}
+
+.footerNavbarLink::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Yazının altına çizgi */
+    width: 0; /* Başlangıç genişliği */
+    height: 2px; /* Çizgi kalınlığı */
+    background-color: white; /* Çizgi rengi */
+    transition: width 0.3s ease; /* Yumuşak geçiş efekti */
+}
+
+.footerNavbarLink:hover::after {
+    width: 100%; /* Çizgi tam genişliğe ulaşıyor */
+}
+
+.footerNavbarLink.active::after {
+    width: 100%; /* Aktif sayfa için çizgi sabit */
 }

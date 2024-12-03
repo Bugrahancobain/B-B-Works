@@ -9,7 +9,170 @@
       "contact": "Contact"
     },
     "HomePage": {
-      "homeTitle": "Landing page"
+    "headerTitle": "Right Social Networking for Marketing",
+    "headerDescription": "Consectetur adipiscing elit, sed do eiusmod tempor incididunt dolore magna aliqua quis nostrud exerc.",
+    "aboutUs": "About Us",
+    "ourServicesTitle": "Our Services",
+    "ourServicesSubtitle": "We Offer Expert SEO and Marketing Services",
+    "moreFeatures": "More Features",
+    "servicesSubtitle": "Our Experts are Ready to Help",
+    "servicesDescription": "Dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.",
+    "experience": "Experience",
+    "people": "People",
+    "aboutUsSubtitle": "We Develop & Create Digital Future",
+    "aboutUsDescription": "Adipiscing elit, sed do eiusmod tempor incididunt labore dolore magna aliqua. Ut enim ad minim veniam, quisq wiusmod ut tempor incididunt ut labore et dolore sed do magna aliqua.",
+    "contactEmail": "info@example.com",
+    "blogTitle": "Our Blog",
+    "blogSubtitle": "Latest Articles",
+    "viewAllArticles": "View All Articles"
+  },
+  "ReferencesPage":{
+    "referencesListTitle": "References List",
+    "company": "Company",
+    "sector": "Sector",
+    "workingDate": "Working Date"
+},
+"ReferencesDetailsPage":{
+"previousReference": "Previous Reference",
+"nextReference": "Next Reference",
+"sector": "Sector",
+    "workingDate": "Working Date"
+},
+"OurServicesPage":{
+  "servicesHeader": "Services",
+  "ourServices": "Our Services",
+  "expertsReady": "Our Experts are Ready to Help",
+  "description": "Dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.",
+  "experience": "Experience",
+  "people": "People",
+  "readMore": "Read More",
+  "whoWeAre": "Who We Are",
+  "discoverUs": "Discover Us"
+},
+"OurServicesDetailsPage":{
+  "loading": "Loading...",
+  "youMayAlsoLike": "You May Also Like",
+  "previousService": "Previous Service",
+  "nextService" :"Next Service"
+},
+"ContactPage": {
+    "header": "Contacts",
+    "openHoursTitle": "Open Hours",
+    "weekdays": "Mon-Fri: 9 AM – 5 PM",
+    "weekend": "Sat-Sun: Closed",
+    "addressTitle": "Address",
+    "addressDetails": "176 W street name, New York, NY 10014",
+    "checkLocation": "Check Location",
+    "getInTouchTitle": "Get In Touch",
+    "telephone": "Telephone: +1(800)123-4566",
+    "email": "Email: info@yoursite.com",
+    "contactForm": "Contact Form",
+    "getInMeetTitle": "Get In Meet",
+    "getInMeetDetails": "Google Meet - Zoom",
+    "makeAppointment": "Make an Appointment",
+    "contactUsTitle": "Contact Us",
+    "contactUsSubtitle": "Have Questions? Get in Touch!",
+    "contactUsDescription": "Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.",
+    "meetUsTitle": "Meet Us",
+    "meetUsSubtitle": "Have Questions? Get in Touch!",
+    "meetUsDescription": "Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.",
+    "contactInfoAddress": "785 15h Street, Office 478 Berlin",
+    "contactInfoPhone": "+1 840 841 25 69",
+    "contactInfoEmail": "info@email.com",
+    "formName": "Name",
+    "formEmail": "Email Address",
+    "formPhone": "Phone",
+    "formSubject": "Subject",
+    "formMessage": "How can we help you? Feel free to get in touch!",
+    "formSubmit": "Get In Touch",
+    "meetFormName": "Name",
+    "meetFormEmail": "Email",
+    "meetFormPhone": "Phone Number",
+    "meetFormTopic": "Topic",
+    "meetFormExtraInfo": "Additional Information (optional)",
+    "selectDate": "Select Date",
+    "selectTime": "Select Time",
+    "meetFormSubmit": "Submit"
+  },
+  "BlogPage": {
+    "header": "Blog List",
+    "recentPosts": "Recent Posts",
+    "readMore": "Read More",
+    "bannerAlt": "Banner Ad"
+  },
+  "BlogDetailPage": {
+    "header": "You May Also Like",
+    "previousPost": "Previous Post",
+    "nextPost": "Next Post",
+    "likeButton": "Like",
+    "shareButtons": {
+      "twitter": "Share on Twitter",
+      "facebook": "Share on Facebook",
+      "email": "Share via Email",
+      "copyLink": "Copy Link"
     }
+  },
+  "AboutPage": {
+    "header": "About Us",
+    "firstSection": {
+      "title": "We Help Your Digital Business Grow",
+      "subtitle": "Dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.",
+      "commitments": {
+        "creativeDesign": {
+          "title": "Creative Design",
+          "description": "Natus error sit voluptatem accus antium doloremque."
+        },
+        "endlessPossibilities": {
+          "title": "Endless Possibilities",
+          "description": "Sit voluptatem accus antium doloremque laudan."
+        }
+      }
+    },
+    "secondSection": {
+      "header": "Corporate Service",
+      "title": "We Develop Digital Future",
+      "subtitle": "We appreciate your trust greatly! Our clients choose us and our products because they know we're the best.",
+      "commitments": {
+        "possibilities": {
+          "number": "01.",
+          "title": "Endless Possibilities"
+        },
+        "optimization": {
+          "number": "02.",
+          "title": "Process Optimization"
+        }
+      },
+      "discoverNow": "Discover Now"
+    }
+  },
+    "AdminPage": {
+      "header": "Admin Panel",
+      "welcome": "Welcome",
+      "loading": "Loading...",
+      "redirecting": "Redirecting to login page..."
+    },
+  
+    "AdminSidebar": {
+    "services": "Service Settings",
+    "references": "Reference Settings",
+    "blog": "Blog Settings",
+    "meeting": "Appointment Settings",
+    "logout": "Logout"
+   },
+    "FooterLinks": {
+    "office": "Office",
+    "address": "Germany — 785 15h Street, Office 478 Berlin, De 81566",
+    "email": "info@email.com",
+    "phone": "+1 840 841 25 69",
+    "links": "Links",
+    "contactWithUs": "Contact With Us",
+    "rights": "© B&B WORKS {year}. ALL RIGHTS RESERVED.",
+    "home": "Home",
+    "about": "About Us",
+    "ourServices": "Our Services",
+    "references": "References",
+    "blog": "Blog",
+    "contact": "Contact"
+  }
   }
   

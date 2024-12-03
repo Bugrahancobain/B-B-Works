@@ -3,17 +3,21 @@
 import React, { useState, useEffect } from "react";
 import { realtimeDb } from "../../../firebase";
 import { ref, onValue } from "firebase/database";
-import { FaTwitter, FaFacebook, FaInstagram, FaGlobe, FaChevronDown } from "react-icons/fa";
+import { FaTwitter, FaFacebook, FaInstagram, FaLink, FaChevronDown } from "react-icons/fa";
+import { IoIosMail } from "react-icons/io";
 import "./references.css";
-import Link from "next/link";
 import { useRouter } from "next/navigation"; // useRouter ekleniyor
+import { useTranslations } from "next-intl";
 
 function ReferencesPage({ params }) {
-    const [references, setReferences] = useState([]);
+    const t = useTranslations("ReferencesPage");
+
     const resolvedParams = React.use(params); // `params` çözülüyor
     const locale = resolvedParams.locale || "en"; // Varsayılan dil 'en'
+    const [references, setReferences] = useState([]);
 
     const router = useRouter(); // useRouter hook'u tanımlandı
+
     // Firebase'den referansları çekme
     useEffect(() => {
         const referencesRef = ref(realtimeDb, "references");
@@ -23,6 +27,8 @@ function ReferencesPage({ params }) {
             const referencesArray = data
                 ? Object.entries(data).map(([id, reference]) => ({ id, ...reference }))
                 : [];
+            // Tarihe göre sıralama: En son eklenen en başa
+            referencesArray.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
             setReferences(referencesArray);
         });
     }, []);
@@ -30,7 +36,7 @@ function ReferencesPage({ params }) {
     return (
         <div className="referencesPage">
             <div className="referencePageHeaderDiv">
-                <h1>References List</h1>
+                <h1>{t("referencesListTitle")}</h1>
                 <FaChevronDown />
             </div>
             <div className="referencesGrid">
@@ -47,38 +53,68 @@ function ReferencesPage({ params }) {
                             className="referenceCardImage"
                         />
                         <div className="referenceCardDetails">
-                            <p>Şirket:</p>
+                            <p>{t("company")}:</p>
                             <h3 className="referenceCardTitle">{reference.companyName}</h3>
                         </div>
                         <hr />
                         <div className="referenceCardDetails">
-                            <p>Sektör:</p>
+                            <p>{t("sector")}:</p>
                             <p className="referenceCardSector">{reference.sector[locale]}</p>
                         </div>
                         <hr />
                         <div className="referenceCardDetails">
-                            <p>Çalışma Tarihi</p>
-                            <p className="referenceCardDate">{reference.dateAdded}</p>
+                            <p>{t("workingDate")}:</p>
+                            <p className="referenceCardDate">{new Date(reference.dateAdded).toLocaleDateString(locale)}</p>
                         </div>
                         <div className="referenceCardIcons">
-                            {reference.website && (
-                                <a href={reference.website} target="_blank" rel="noopener noreferrer">
-                                    <FaGlobe />
-                                </a>
-                            )}
-                            {reference.twitter && (
-                                <a href={reference.twitter} target="_blank" rel="noopener noreferrer">
-                                    <FaTwitter />
+                            {reference.instagram && (
+                                <a
+                                    href={reference.instagram}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
+                                >
+                                    <FaInstagram />
                                 </a>
                             )}
                             {reference.facebook && (
-                                <a href={reference.facebook} target="_blank" rel="noopener noreferrer">
+                                <a
+                                    href={reference.facebook}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
+                                >
                                     <FaFacebook />
                                 </a>
                             )}
-                            {reference.instagram && (
-                                <a href={reference.instagram} target="_blank" rel="noopener noreferrer">
-                                    <FaInstagram />
+                            {reference.twitter && (
+                                <a
+                                    href={reference.twitter}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
+                                >
+                                    <FaTwitter />
+                                </a>
+                            )}
+                            {reference.email && (
+                                <a
+                                    href={`mailto:${reference.email}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
+                                >
+                                    <IoIosMail />
+                                </a>
+                            )}
+                            {reference.website && (
+                                <a
+                                    href={reference.website}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
+                                >
+                                    <FaLink />
                                 </a>
                             )}
                         </div>

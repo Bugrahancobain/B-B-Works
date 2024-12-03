@@ -8,9 +8,12 @@ import { FaChevronDown, FaMapMarkerAlt, FaUser, FaEnvelope, FaPhone, FaInfoCircl
 import { IoIosMail } from "react-icons/io";
 import { MdPhoneIphone } from "react-icons/md";
 import emailjs from "emailjs-com";
+import { useTranslations } from "next-intl";
 
-
-function ContactPage() {
+function ContactPage({ params }) {
+    const resolvedParams = React.use(params);
+    const id = resolvedParams?.id; // Hizmet ID'si
+    const t = useTranslations("ContactPage");
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -157,35 +160,34 @@ function ContactPage() {
         <div className="contactPageMain">
             <div>
                 <div className="contactPageHeaderDiv">
-                    <h1>Contacts</h1>
+                    <h1>{t("header")}</h1>
                     <FaChevronDown />
                 </div>
                 <div className="contactInfoDiv">
                     <div className="contactInfoUnderDiv">
                         <img src="https://panda.axiomthemes.com/wp-content/uploads/2021/11/wall-clock.svg" alt="B&B" />
-                        <h3>Open Hours</h3>
-                        <p>Mon-Fri: 9 AM – 5 PM</p>
-                        <p>Sat-Sun: Closed</p>
+                        <h3>{t("openHoursTitle")}</h3>
+                        <p>{t("weekdays")}</p>
+                        <p>{t("weekend")}</p>
                     </div>
                     <div className="contactInfoUnderDiv">
                         <img src="https://panda.axiomthemes.com/wp-content/uploads/2021/11/map.svg" alt="B&B" />
-                        <h3>Address</h3>
-                        <p>176 W street name, New York,
-                            NY 10014</p>
-                        <p className="contactInfoLink" onClick={handleScrollToMap}>Check Location</p>
+                        <h3>{t("addressTitle")}</h3>
+                        <p>{t("addressDetails")}</p>
+                        <p className="contactInfoLink" onClick={handleScrollToMap}>{t("checkLocation")}</p>
                     </div>
                     <div className="contactInfoUnderDiv">
                         <img src="https://panda.axiomthemes.com/wp-content/uploads/2021/11/telephone.svg" alt="B&B" />
-                        <h3>Geth In Touch</h3>
-                        <p>Telephone: +1(800)123-4566</p>
-                        <p>Email: info@yoursite.com</p>
-                        <p className="contactInfoLink" onClick={handleScrollToForm}>Contact Form</p>
+                        <h3>{t("getInTouchTitle")}</h3>
+                        <p>{t("telephone")}</p>
+                        <p>{t("email")}</p>
+                        <p className="contactInfoLink" onClick={handleScrollToForm}>{t("contactForm")}</p>
                     </div>
                     <div className="contactInfoUnderDiv">
                         <img style={{ height: "65px", width: "60px" }} src="https://www.svgrepo.com/show/262819/webcam.svg" alt="B&B" />
-                        <h3>Geth In Meet</h3>
-                        <p>Google Meet - Zoom</p>
-                        <p className="contactInfoLink" onClick={handleScrollToMeet}>Make an Appointment</p>
+                        <h3>{t("getInMeetTitle")}</h3>
+                        <p>{t("getInMeetDetails")}</p>
+                        <p className="contactInfoLink" onClick={handleScrollToMeet}>{t("makeAppointment")}</p>
                     </div>
                 </div>
                 <div>
@@ -195,62 +197,62 @@ function ContactPage() {
             </div>
             <div className="contactFormDiv" ref={contactFormRef}>
                 <div className="contactFormText" >
-                    <h3>Contact Us</h3>
-                    <h2>Have Questions? Get in Touch!</h2>
-                    <h4>Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</h4>
+                    <h3>{t("contactUsTitle")}</h3>
+                    <h2>{t("contactUsSubtitle")}</h2>
+                    <h4>{t("contactUsDescription")}</h4>
                     <div className="contactMarkt">
                         <FaMapMarkerAlt className="contactSvg" />
-                        <p>785 15h Street, Office 478 Berlin</p>
+                        <p>{t("contactInfoAddress")}</p>
                     </div>
                     <div className="contactMarkt">
                         <MdPhoneIphone className="contactSvg" />
-                        <p>+1 840 841 25 69</p>
+                        <p>{t("contactInfoPhone")}</p>
                     </div>
                     <div className="contactMarkt">
                         <IoIosMail className="contactSvg" />
-                        <p>info@email.com</p>
+                        <p>{t("contactInfoEmail")}</p>
                     </div>
                 </div>
                 <div>
                     <form ref={form} onSubmit={sendEmail} className="contactForm">
                         <div className="formGroup">
                             <FaUser className="formIcon" />
-                            <input type="text" name="user_name" placeholder="Name" required />
+                            <input type="text" name="user_name" placeholder={t("formName")} required />
                         </div>
                         <div className="formGroup">
                             <FaEnvelope className="formIcon" />
-                            <input type="email" name="user_email" placeholder="Email Address" required />
+                            <input type="email" name="user_email" placeholder={t("formEmail")} required />
                         </div>
                         <div className="formGroup">
                             <FaPhone className="formIcon" />
-                            <input type="tel" name="user_phone" placeholder="Phone" required />
+                            <input type="tel" name="user_phone" placeholder={t("formPhone")} required />
                         </div>
                         <div className="formGroup">
                             <FaInfoCircle className="formIcon" />
-                            <input type="text" name="user_subject" placeholder="Subject" required />
+                            <input type="text" name="user_subject" placeholder={t("formSubject")} required />
                         </div>
                         <div className="formGroup">
                             <FaPencilAlt className="formIcon" />
-                            <textarea name="message" placeholder="How can we help you? Feel free to get in touch!" required></textarea>
+                            <textarea name="message" placeholder={t("formMessage")} required></textarea>
                         </div>
                         <button type="submit" className="submitButton">
-                            Get In Touch
+                            {t("formSubmit")}
                         </button>
                     </form>
                 </div>
             </div>
             <div className="meetPage" ref={contactMeetRef}>
                 <div className="meetFormText">
-                    <h3>Meet Us</h3>
-                    <h2>Have Questions? Get in Touch!</h2>
-                    <h4>Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</h4>
+                    <h3>{t("meetUsTitle")}</h3>
+                    <h2>{t("meetUsSubtitle")}</h2>
+                    <h4>{t("meetUsDescription")}</h4>
                 </div>
                 <form onSubmit={handleSubmit} ref={form} className="meetForm">
                     <div className="meetFormGroup">
                         <FaUser className="meetFormIcon" />
                         <input
                             type="text"
-                            placeholder="Adınız"
+                            placeholder={t("formName")}
                             value={formData.firstName}
                             name="user_name"
                             onChange={(e) =>
@@ -263,7 +265,7 @@ function ContactPage() {
                         <FaEnvelope className="meetFormIcon" />
                         <input
                             type="email"
-                            placeholder="E-posta"
+                            placeholder={t("formEmail")}
                             value={formData.email}
                             name="user_email"
                             onChange={(e) =>
@@ -276,7 +278,7 @@ function ContactPage() {
                         <FaPhone className="meetFormIcon" />
                         <input
                             type="tel"
-                            placeholder="Telefon Numarası"
+                            placeholder={t("formPhone")}
                             value={formData.phone}
                             name="user_phone"
                             onChange={(e) =>
@@ -289,7 +291,7 @@ function ContactPage() {
                         <FaInfoCircle className="meetFormIcon" />
                         <input
                             type="text"
-                            placeholder="Konu Başlığı"
+                            placeholder={t("formSubject")}
                             value={formData.topic}
                             name="user_subject"
                             onChange={(e) =>
@@ -301,7 +303,7 @@ function ContactPage() {
                     <div className="meetFormGroup">
                         <FaPencilAlt className="meetFormIcon" />
                         <textarea
-                            placeholder="Ek Bilgiler (isteğe bağlı)"
+                            placeholder={t("meetFormExtraInfo")}
                             value={formData.extraInfo}
                             name="message"
                             onChange={(e) =>
@@ -329,7 +331,7 @@ function ContactPage() {
                             required
                             disabled={!formData.date} // Tarih seçilmeden saat seçimi yapılmasın
                         >
-                            <option value="">Saat Seçin</option>
+                            <option value="">{t("selectTime")}</option>
                             {timeSlots.map((slot, index) => (
                                 <option
                                     key={index}
@@ -344,7 +346,7 @@ function ContactPage() {
                         </select>
                     </div>
                     <button className="meetSubmitButton" type="submit" disabled={!formData.date || !formData.time}>
-                        Gönder
+                        {t("meetFormSubmit")}
                     </button>
                 </form>
             </div>

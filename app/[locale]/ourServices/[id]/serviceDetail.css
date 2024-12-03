@@ -1,35 +1,216 @@
 .serviceDetailPage {
-    padding: 20px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
 }
 
-.serviceDetailHeader {
+.serviceDetailImageHeader {
+    width: 100%;
+    height: 80vh;
+    position: relative;
+}
+
+.serviceDetailsBanner {
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+    align-items: center;
     text-align: center;
+    object-fit: contain;
 }
 
-.serviceDetailHeader img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+.serviceDetailHeaderDiv {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: black;
+    z-index: 1000;
+    width: 50%;
+    height: 100%;
+}
+
+.serviceDetailHeaderDiv h1 {
+    font-size: 50px;
+    background-color: #F9FAFF;
+    padding: 8px;
+    border-radius: 12px;
+    border: 1px solid black;
+}
+
+.serviceDetailHeaderDiv ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    border: 1px solid black;
+
+    background-color: #F9FAFF;
+    padding: 8px;
+    border-radius: 12px;
 }
 
 .serviceDetailContent {
-    width: 80%;
-    max-width: 800px;
-    text-align: left;
+    margin: 50px 100px;
+    width: 50%;
+    font-size: 18px;
 }
 
-.serviceDetailContent h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+.serviceDetailContent::first-letter {
+    font-size: 4em;
+    font-weight: bold;
+    margin-right: 2px;
 }
 
-.serviceDetailContent p {
-    font-size: 1rem;
-    line-height: 1.6;
+/* Genel düzen */
+.social-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    margin-top: 50px;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+
+/* Beğenme Butonu */
+.like-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.heart-icon {
+    font-size: 24px;
+    color: #ff5555;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.heart-icon:hover {
+    transform: scale(1.2);
+    color: #ff0000;
+}
+
+.like-count {
+    font-size: 16px;
+    color: #777;
+}
+
+/* Paylaşım Butonları */
+.share-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.share-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e6e6e6;
+    border: none;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.share-button:hover {
+    transform: scale(1.1);
+}
+
+/* Sosyal medya renkleri */
+.twitter {
+    background-color: #1da1f2;
+}
+
+.facebook {
+    background-color: #1877f2;
+}
+
+.email {
+    background-color: #636363;
+}
+
+.link {
+    background-color: #f5f5f5;
     color: #333;
+}
+
+.previousNextServiceContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    width: 50%;
+    height: 500px;
+}
+
+.previousNextServiceContent {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.previousService, .nextService {
+    width: 250px;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: white;
+    padding: 12px;
+    border-radius: 12px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.previousService:hover, .nextService:hover{
+
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.previousService h3, .nextService h3 {
+    font-size: 20px;
+    margin: 10px;
+}
+
+.serviceLink {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.serviceImage {
+    width: 100%;
+    height: 25%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.serviceTitle {
+    font-size: 22px;
+    font-weight: 800;
+    margin: 10px 0;
+}
+
+.serviceExcerpt {
+    font-size: 14px;
+    color: grey;
+    font-weight: 800;
 }

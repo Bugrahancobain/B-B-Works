@@ -8,6 +8,168 @@
       "contact": "İletişim"
   },
   "HomePage": {
-    "homeTitle": "Açılış Sayfası"
+    "headerTitle": "Pazarlama için Doğru Sosyal Ağ",
+    "headerDescription": "Consectetur adipiscing elit, sed do eiusmod tempor incididunt dolore magna aliqua quis nostrud exerc.",
+    "aboutUs": "Hakkımızda",
+    "ourServicesTitle": "Hizmetlerimiz",
+    "ourServicesSubtitle": "Uzman SEO ve Pazarlama Hizmetleri Sunuyoruz",
+    "moreFeatures": "Tüm Özellikleri Keşfet",
+    "servicesSubtitle": "Uzmanlarımız Yardımcı Olmaya Hazır",
+    "servicesDescription": "Dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.",
+    "experience": "Deneyim",
+    "people": "Kişiler",
+    "aboutUsSubtitle": "Dijital Geleceği Geliştiriyor ve Yaratıyoruz",
+    "aboutUsDescription": "Adipiscing elit, sed do eiusmod tempor incididunt labore dolore magna aliqua. Ut enim ad minim veniam, quisq wiusmod ut tempor incididunt ut labore et dolore sed do magna aliqua.",
+    "contactEmail": "info@example.com",
+    "blogTitle": "Blogumuz",
+    "blogSubtitle": "Son Yazılar",
+    "viewAllArticles": "Tüm Yazıları Gör"
+  },
+  "ReferencesPage":{
+    "referencesListTitle": "Referans Listesi",
+    "company": "Şirket",
+    "sector": "Sektör",
+    "workingDate": "Çalışma Tarihi"
+},
+"ReferencesDetailsPage":{
+  "previousReference": "Önceki Referans",
+"nextReference": "Sonraki Referans",
+"sector": "Sektör",
+    "workingDate": "Çalışma Tarihi"
+},
+"OurServicesPage":{
+  "servicesHeader": "Hizmetler",
+  "ourServices": "Hizmetlerimiz",
+  "expertsReady": "Uzmanlarımız Yardımcı Olmaya Hazır",
+  "description": "Açıklamalar ve detaylar burada yer alacaktır. Uzmanlarımız her zaman yanınızda.",
+  "experience": "Deneyimler",
+  "people": "Kişiler",
+  "readMore": "Daha Fazla Oku",
+  "whoWeAre": "Biz Kimiz",
+  "discoverUs": "Daha Fazlasını Keşfedin"
+},
+"OurServicesDetailsPage":{
+  "loading": "Yükleniyor...",
+  "youMayAlsoLike": "Bunlarıda Beğenbebilirsiniz",
+  "previousService" :"Önceki Servis",
+  "nextService" :"Sonraki Servis"
+},
+"ContactPage": {
+    "header": "İletişim",
+    "openHoursTitle": "Çalışma Saatleri",
+    "weekdays": "Pazartesi-Cuma: 9:00 - 17:00",
+    "weekend": "Cumartesi-Pazar: Kapalı",
+    "addressTitle": "Adres",
+    "addressDetails": "176 W sokak adı, New York, NY 10014",
+    "checkLocation": "Konumu Kontrol Et",
+    "getInTouchTitle": "Bizimle İletişime Geçin",
+    "telephone": "Telefon: +1(800)123-4566",
+    "email": "E-posta: info@yoursite.com",
+    "contactForm": "İletişim Formu",
+    "getInMeetTitle": "Toplantı Ayarla",
+    "getInMeetDetails": "Google Meet - Zoom",
+    "makeAppointment": "Randevu Ayarla",
+    "contactUsTitle": "Bize Ulaşın",
+    "contactUsSubtitle": "Sorularınız mı var? Bizimle iletişime geçin!",
+    "contactUsDescription": "Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.",
+    "meetUsTitle": "Bize Ulaşın",
+    "meetUsSubtitle": "Sorularınız mı var? Bizimle iletişime geçin!",
+    "meetUsDescription": "Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.",
+    "contactInfoAddress": "785 15h Cadde, Ofis 478 Berlin",
+    "contactInfoPhone": "+1 840 841 25 69",
+    "contactInfoEmail": "info@email.com",
+    "formName": "Adınız",
+    "formEmail": "E-posta Adresi",
+    "formPhone": "Telefon",
+    "formSubject": "Konu",
+    "formMessage": "Size nasıl yardımcı olabiliriz? Lütfen bizimle iletişime geçmekten çekinmeyin!",
+    "formSubmit": "Bizimle İletişime Geçin",
+    "meetFormName": "Adınız",
+    "meetFormEmail": "E-posta",
+    "meetFormPhone": "Telefon Numarası",
+    "meetFormTopic": "Konu Başlığı",
+    "meetFormExtraInfo": "Ek Bilgiler (isteğe bağlı)",
+    "selectDate": "Tarih Seçin",
+    "selectTime": "Saat Seçin",
+    "meetFormSubmit": "Gönder"
+  },
+  "BlogPage": {
+    "header": "Blog Listesi",
+    "recentPosts": "Son Yazılar",
+    "readMore": "Devamını Oku",
+    "bannerAlt": "Reklam Görseli"
+  },
+  "BlogDetailPage": {
+    "header": "Bunları da Beğenebilirsiniz",
+    "previousPost": "Önceki Yazı",
+    "nextPost": "Sonraki Yazı",
+    "likeButton": "Beğen",
+    "shareButtons": {
+      "twitter": "Twitter'da Paylaş",
+      "facebook": "Facebook'ta Paylaş",
+      "email": "E-posta ile Paylaş",
+      "copyLink": "Bağlantıyı Kopyala"
+    }
+  },
+  "AboutPage": {
+    "header": "Hakkımızda",
+    "firstSection": {
+      "title": "Dijital İşinizi Büyütmenize Yardımcı Oluyoruz",
+      "subtitle": "Dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.",
+      "commitments": {
+        "creativeDesign": {
+          "title": "Yaratıcı Tasarım",
+          "description": "Natus error sit voluptatem accus antium doloremque."
+        },
+        "endlessPossibilities": {
+          "title": "Sonsuz Olanaklar",
+          "description": "Sit voluptatem accus antium doloremque laudan."
+        }
+      }
+    },
+    "secondSection": {
+      "header": "Kurumsal Hizmet",
+      "title": "Dijital Geleceği Geliştiriyoruz",
+      "subtitle": "Güveninizi takdir ediyoruz! Müşterilerimiz bizi ve ürünlerimizi seçiyor çünkü en iyisi olduğumuzu biliyorlar.",
+      "commitments": {
+        "possibilities": {
+          "number": "01.",
+          "title": "Sonsuz Olanaklar"
+        },
+        "optimization": {
+          "number": "02.",
+          "title": "Süreç Optimizasyonu"
+        }
+      },
+      "discoverNow": "Hemen Keşfet"
+    }
+  },
+  "AdminPage": {
+    "header": "Yönetim Paneli",
+    "welcome": "Hoşgeldiniz",
+    "loading": "Yükleniyor...",
+    "redirecting": "Giriş sayfasına yönlendiriliyorsunuz..."
+  },
+  "AdminSidebar": {
+    "services": "Hizmet Ayarları",
+    "references": "Referans Ayarları",
+    "blog": "Blog Ayarları",
+    "meeting": "Randevu Ayarları",
+    "logout": "Çıkış"
+  },
+  "FooterLinks": {
+    "office": "Ofis",
+    "address": "Almanya — 785 15h Sokak, Ofis 478 Berlin, De 81566",
+    "email": "info@email.com",
+    "phone": "+1 840 841 25 69",
+    "links": "Bağlantılar",
+    "contactWithUs": "İletişime Geçin",
+    "rights": "© B&B WORKS {year}. TÜM HAKLARI SAKLIDIR.",
+    "home": "Ana Sayfa",
+    "about": "Hakkımızda",
+    "ourServices": "Hizmetlerimiz",
+    "references": "Referanslar",
+    "blog": "Blog",
+    "contact": "İletişim"
   }
 }

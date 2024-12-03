@@ -114,13 +114,11 @@ export default function Home({ params }) {
       <div className="homePageFirstDiv">
 
         <div className="homePageFirstContextDiv">
-          <h2>Right Social Networking for Marketing</h2>
-          <h4>
-            Consectetur adipiscing elit, sed do eiusmod tempor incididunt dolore magna aliqua quis nostrud exerc.
-          </h4>
+          <h2>{t("headerTitle")}</h2>
+          <h4>{t("headerDescription")}</h4>
           <Link href={`/${locale}/aboutUs`}>
             <div className="homePageLink">
-              About Us
+              {t("aboutUs")}
             </div>
           </Link>
         </div>
@@ -144,8 +142,8 @@ export default function Home({ params }) {
       </div>
       <Company />
       <div className="homePageServicesDivMain">
-        <h4>Our Services</h4>
-        <h2>We Offer Expert SEO and Marketing Services</h2>
+        <h4>{t("ourServicesTitle")}</h4>
+        <h2>{t("ourServicesSubtitle")}</h2>
         <div className="homePageServicesDiv">
           {services.slice(0, 4).map((service) => (
             <Link
@@ -159,14 +157,15 @@ export default function Home({ params }) {
                 </div>
                 <div className="homePageServicesHeaders">
                   <h3>{service.title[locale]}</h3>
-                  <h4>{service.shortDescription[locale]}</h4>
+                  <div style={{ color: "grey", marginTop: "10px" }} dangerouslySetInnerHTML={{ __html: service.shortDescription?.[locale]?.substring(0, 75) + "..." }} />
+
                 </div>
               </div>
             </Link>
           ))}
         </div>
         <Link href={`/${locale}/ourServices`}>
-          <div className="homePageServicesLink">More Features</div>
+          <div className="homePageServicesLink">{t("moreFeatures")}</div>
         </Link>
       </div>
       <div className="servicesFirstDiv">
@@ -199,20 +198,18 @@ export default function Home({ params }) {
           </div>
         </div>
         <div className="servicesFirstContextDiv">
-          <h3>Our Services</h3>
-          <h2>Our Experts are Ready to Help</h2>
-          <h4>
-            Dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-          </h4>
+          <h3>O{t("ourServicesTitle")}</h3>
+          <h2>{t("servicesSubtitle")}</h2>
+          <h4>{t("servicesDescription")}</h4>
           <div className="servicesPageExperiences">
             <div className="servicesPageExperience">
-              <h4>Experience</h4>
+              <h4>{t("experience")}</h4>
               <h2>
                 {isVisibleEx ? <CountUp start={0} end={referenceCount} duration={2} /> : 0}+
               </h2>
             </div>
             <div className="servicesPagePeople">
-              <h4>People</h4>
+              <h4>{t("people")}</h4>
               <h2>
                 {isVisibleEx ? <CountUp start={0} end={peopleCount} duration={2} /> : 0}+
               </h2>
@@ -223,18 +220,14 @@ export default function Home({ params }) {
       <div className="homePageBarFirstDiv">
         <div className="homePageAboutUsMain">
           <div className="homePageFirstContextDiv" style={{ width: "50%" }}>
-            <h3>About Us</h3>
-            <h2>We Develop & Create Digital Future</h2>
-            <h4>
-              Adipiscing elit, sed do eiusmod tempor incididunt labore dolore magna aliqua. Ut enim ad minim veniam, quisq wiusmod ut tempor incididunt ut labore et dolore sed do magna aliqua.
-            </h4>
+            <h3>{t("aboutUs")}</h3>
+            <h2>{t("aboutUsSubtitle")}</h2>
+            <h4>{t("aboutUsDescription")}</h4>
             <div style={{ display: "flex", alignItems: "center", gap: "20px", marginTop: "20px" }}>
               <div style={{ backgroundColor: "white", padding: "20px", borderRadius: "50%", width: "70px", height: "70px", textAlign: "center" }}>
                 <IoIosMail style={{ fontSize: "16px", width: "100%", height: "100%" }} />
               </div>
-              <div>
-                info@example.com
-              </div>
+              <div>{t("contactEmail")}</div>
             </div>
           </div>
           <div className="homePageBarsDiv">
@@ -258,11 +251,11 @@ export default function Home({ params }) {
       </div>
       <div className="homePageBlogDiv">
         <div className="homePageBlogHeader">
-          <h3>Our Blog</h3>
-          <h2>Latest Articles</h2>
+          <h3>{t("blogTitle")}</h3>
+          <h2>{t("blogSubtitle")}</h2>
         </div>
         <div className="homePageBlogBoxes">
-          {blogs.map((blog) => (
+          {blogs.slice(0, 3).map((blog) => (
             <Link
               key={blog.id}
               href={`/${locale}/blog/${blog.id}`}
@@ -271,7 +264,7 @@ export default function Home({ params }) {
               <div className="homePageBlogBox">
                 <img className="homePageBlogImage" src={blog.image} alt={blog.title[locale]} />
                 <div className="homePageBlogDate">
-                  <span>{blog.dateAdded}</span>
+                  <span>{new Date(blog.dateAdded).toLocaleDateString(locale)}</span>
                 </div>
                 <h3 className="homePageBlogTitle">{blog.title[locale]}</h3>
               </div>
@@ -279,7 +272,7 @@ export default function Home({ params }) {
           ))}
         </div>
         <Link href={`/${locale}/blog`}>
-          <div className="homePageServicesLink">View All Articles</div>
+          <div className="homePageServicesLink">{t("viewAllArticles")}</div>
         </Link>
       </div>
     </div >

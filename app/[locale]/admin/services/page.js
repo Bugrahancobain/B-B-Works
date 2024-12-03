@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import AdminSidebar from "../../../../components/AdminSidebar";
+import { Editor } from "@tinymce/tinymce-react";
 import { realtimeDb } from "../../../../firebase";
 import { ref, set, onValue, remove } from "firebase/database";
 import "./adminServices.css";
@@ -14,10 +15,11 @@ function Page({ params }) {
     const [isPopupOpen, setPopupOpen] = useState(false);
     const [editMode, setEditMode] = useState(false);
     const [editServiceId, setEditServiceId] = useState(null);
+    const [selectedLanguage, setSelectedLanguage] = useState("en"); // Varsayılan dil
     const [newService, setNewService] = useState({
         image: "",
-        title: { en: "", tr: "" }, // Başlık dillere ayrıldı
-        shortDescription: { en: "", tr: "" }, // Kısa açıklama dillere ayrıldı
+        title: { en: "", tr: "" },
+        shortDescription: { en: "", tr: "" },
         details: { en: "", tr: "" },
     });
 
@@ -104,54 +106,77 @@ function Page({ params }) {
                         />
                         <input
                             type="text"
-                            placeholder="Başlık (EN)"
-                            value={newService.title.en}
-                            onChange={(e) =>
-                                setNewService({ ...newService, title: { ...newService.title, en: e.target.value } })
-                            }
-                        />
-                        <input
-                            type="text"
-                            placeholder="Başlık (TR)"
-                            value={newService.title.tr}
-                            onChange={(e) =>
-                                setNewService({ ...newService, title: { ...newService.title, tr: e.target.value } })
-                            }
-                        />
-                        <textarea
-                            placeholder="Kısa Açıklama (EN)"
-                            value={newService.shortDescription.en}
+                            placeholder="Başlık"
+                            value={newService.title[selectedLanguage]}
                             onChange={(e) =>
                                 setNewService({
                                     ...newService,
-                                    shortDescription: { ...newService.shortDescription, en: e.target.value },
+                                    title: { ...newService.title, [selectedLanguage]: e.target.value },
                                 })
                             }
                         />
-                        <textarea
-                            placeholder="Kısa Açıklama (TR)"
-                            value={newService.shortDescription.tr}
-                            onChange={(e) =>
+
+                        <h4>Kısa Açıklama</h4>
+                        <Editor
+                            apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
+                            value={newService.shortDescription[selectedLanguage]}
+                            onEditorChange={(content) =>
                                 setNewService({
                                     ...newService,
-                                    shortDescription: { ...newService.shortDescription, tr: e.target.value },
+                                    shortDescription: { ...newService.shortDescription, [selectedLanguage]: content },
                                 })
                             }
+                            init={{
+                                height: 150,
+                                menubar: false,
+                                plugins: [
+                                    "advlist autolink lists link image charmap print preview anchor",
+                                    "searchreplace visualblocks code fullscreen",
+                                    "insertdatetime media table paste code help wordcount",
+                                ],
+                                toolbar:
+                                    "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code",
+                            }}
                         />
-                        <textarea
-                            placeholder="Detay (EN)"
-                            value={newService.details.en}
-                            onChange={(e) =>
-                                setNewService({ ...newService, details: { ...newService.details, en: e.target.value } })
+
+                        <h4>Detaylar</h4>
+                        <Editor
+                            apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
+                            value={newService.details[selectedLanguage]}
+                            onEditorChange={(content) =>
+                                setNewService({
+                                    ...newService,
+                                    details: { ...newService.details, [selectedLanguage]: content },
+                                })
                             }
+                            init={{
+                                height: 150,
+                                menubar: false,
+                                plugins: [
+                                    "advlist autolink lists link image charmap print preview anchor",
+                                    "searchreplace visualblocks code fullscreen",
+                                    "insertdatetime media table paste code help wordcount",
+                                ],
+                                toolbar:
+                                    "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | code",
+                            }}
                         />
-                        <textarea
-                            placeholder="Detay (TR)"
-                            value={newService.details.tr}
-                            onChange={(e) =>
-                                setNewService({ ...newService, details: { ...newService.details, tr: e.target.value } })
-                            }
-                        />
+
+                        <select
+                            value={selectedLanguage}
+                            onChange={(e) => setSelectedLanguage(e.target.value)}
+                            style={{
+                                marginTop: "20px",
+                                padding: "10px",
+                                borderRadius: "8px",
+                                border: "1px solid #ccc",
+                                width: "100%",
+                            }}
+                        >
+                            <option value="en">English</option>
+                            <option value="tr">Türkçe</option>
+                        </select>
+
                         <div className="adminServicesPopupActions">
                             <button onClick={handleAddService}>
                                 {editMode ? "Kaydet" : "Ekle"}
@@ -166,7 +191,7 @@ function Page({ params }) {
                         <div key={service.id} className="adminServicesCard">
                             <img src={service.image} alt={locale === "en" ? service.title.en : service.title.tr} />
                             <h3>{locale === "en" ? service.title.en : service.title.tr}</h3>
-                            <p>{locale === "en" ? service.shortDescription.en : service.shortDescription.tr}</p>
+                            <div dangerouslySetInnerHTML={{ __html: service.shortDescription?.[locale]?.substring(0, 50) + "..." }} />
                             <div className="adminServicesCardActions">
                                 <button onClick={() => handleEditService(service.id)}>Düzenle</button>
                                 <button onClick={() => handleDeleteService(service.id)}>Sil</button>
