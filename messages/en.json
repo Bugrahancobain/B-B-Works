@@ -153,6 +153,7 @@
     },
   
     "AdminSidebar": {
+      "loading": "Loading...",
     "services": "Service Settings",
     "references": "Reference Settings",
     "blog": "Blog Settings",

@@ -2,6 +2,7 @@
     border-top: 1px solid #D0D3DC;
     background-color: #0C0833;
     color: white;
+    width: 100%;
 }
 
 .footer{
@@ -52,6 +53,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 10px;
 }
 .footerLinks{
     display: flex;
@@ -105,4 +107,20 @@
 
 .footerNavbarLink.active::after {
     width: 100%; /* Aktif sayfa için çizgi sabit */
+}
+
+@media (max-width: 850px) {
+    .footerNav{
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        height: max-content;
+        width: 100%;
+    }
+    .footerLinks{
+        align-items: center;
+        gap: 10px;
+        margin: 25px 0;
+    }
 }

@@ -1,5 +1,5 @@
 "use client";
-
+import withAuth from "../../../../components/withAuth";
 import React, { useState, useEffect } from "react";
 import AdminSidebar from "../../../../components/AdminSidebar";
 import { Editor } from "@tinymce/tinymce-react"; // TinyMCE Editörü
@@ -201,4 +201,4 @@ function Page({ params }) {
     );
 }
 
-export default Page;
+export default withAuth(Page);

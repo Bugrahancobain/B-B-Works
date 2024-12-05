@@ -192,3 +192,35 @@ font-size: 50px;
     color: grey;
     font-weight: 800;
   }
+
+  @media (max-width: 850px) {
+    .blogDetailContent{
+        width: 90%;
+        margin: 100px 0;
+    }
+    .previousNextBlogContainer{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .previousNextBlogContent  {
+      width: 90%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: max-content;
+      gap: 30px;
+  }
+  .previousBlog, .nextBlog{
+    width: auto;
+    height: max-content;
+  }
+  .blogImage{
+    height: 300px;
+  }
+  .blogDetailHeaderDiv h1{
+    font-size: 30px;
+  }
+}

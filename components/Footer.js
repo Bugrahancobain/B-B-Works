@@ -6,10 +6,10 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-function Footer({ params }) {
+function Footer() {
     const t = useTranslations("FooterLinks");
     const pathname = usePathname();
-    const locale = params?.locale || "en"; // Varsayılan dil 'en'
+    const locale = pathname.split("/")[1] || "en"; // URL'den locale al, varsayılan olarak 'en'
     const thisYear = new Date().getFullYear();
 
     return (

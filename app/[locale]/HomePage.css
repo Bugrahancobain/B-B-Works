@@ -43,7 +43,7 @@ background-color: #6f46f7;
 
 .homePageServicesDivMain h2{
     font-size: 50px;
-    width: 50%;
+    width: 75%;
 }
 
 .homePageServicesDiv{
@@ -272,4 +272,45 @@ background-color: #6f46f7;
 
 .homePageBlogTitle:hover {
   color: grey;
+}
+
+@media (max-width: 1082px) {
+  .homePageFirstDiv{
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 30px;
+    margin-bottom: 20px;
+  }
+  .homePageFirstContextDiv a{ 
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+  }
+  .homePageServicesDiv{
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 0px;
+      }
+      .homePageServicesDiv a{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        gap: 0px;
+          }
+  .homePageServicesDivMain a{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  .homePageFirstContextDiv h2, .homePageServicesDivMain h2,.homePageBlogHeader h2{
+    font-size: 40px;
+  }
 }

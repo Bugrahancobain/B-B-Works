@@ -188,3 +188,42 @@ height: max-content;
 .servicesAboutLink:hover{
 background-color: #6f46f7;
 }
+
+@media (max-width: 1124px) {
+    .servicesFirstDiv{
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .servicesPageExperiences{
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+    .servicesAboutFirstDiv{
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+
+    padding: 30px;
+    margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 450px) {
+    .servicesFirstImgDiv img, .servicesAboutImgDiv img{
+        width: 100% !important;
+    }
+    .servicesFirstContextDiv{
+        width: 90%;
+    }
+    .servicesAboutFirstContextDiv{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

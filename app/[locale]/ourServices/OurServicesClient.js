@@ -63,6 +63,22 @@ function OurServicesClient({ locale, services, referencesCount }) {
         autoplaySpeed: 5000,
         nextArrow: <CustomNextArrow />,
         prevArrow: <CustomPrevArrow />,
+        responsive: [
+            {
+                breakpoint: 768, // Ekran genişliği 768px veya daha az
+                settings: {
+                    slidesToShow: 2, // 2 slide göster
+                    slidesToScroll: 1, // 1 slide kaydır
+                },
+            },
+            {
+                breakpoint: 450, // Ekran genişliği 450px veya daha az
+                settings: {
+                    slidesToShow: 1, // 1 slide göster
+                    slidesToScroll: 1, // 1 slide kaydır
+                },
+            },
+        ],
     };
 
     return (

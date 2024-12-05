@@ -1,4 +1,5 @@
-.navbarMain{
+/* Genel Navbar */
+.navbarMain {
     display: flex;
     justify-content: space-between;
     padding: 30px;
@@ -7,16 +8,16 @@
     text-align: center;
     align-items: center;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-
 }
 
-.navbarLink{
+.navbarLink {
     color: black;
     margin: 0 10px;
     font-weight: 800;
     position: relative;
     text-decoration: none;
 }
+
 .navbarLinkLogo {
     color: black;
     margin: 0 10px;
@@ -27,22 +28,68 @@
     content: "";
     position: absolute;
     left: 0;
-    bottom: -5px; /* Yazının altına çizgi */
-    width: 0; /* Başlangıç genişliği */
-    height: 2px; /* Çizgi kalınlığı */
-    background-color: black; /* Çizgi rengi */
-    transition: width 0.3s ease; /* Yumuşak geçiş efekti */
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: black;
+    transition: width 0.3s ease;
 }
 
 .navbarLink:hover::after {
-    width: 100%; /* Çizgi tam genişliğe ulaşıyor */
+    width: 100%;
 }
 
 .navbarLink.active::after {
-    width: 100%; /* Aktif sayfa için çizgi sabit */
+    width: 100%;
 }
-.navbarLangOption{
+
+.navbarLangOption {
     font-weight: 800;
     border-radius: 12px;
     padding: 8px;
+}
+
+/* Burger Menü İkonu */
+.burgerMenuIcon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Mobil Görünüm */
+@media (max-width: 850px) {
+    .burgerMenuIcon {
+        display: block !important;
+        color: black;
+    }
+
+    .navbarLinks {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: white;
+        width: 100%;
+        max-height: 0; /* Kapalıyken yüksekliği 0 */
+        overflow: hidden; /* Taşan içeriği gizle */
+        transition: max-height 0.3s ease; /* Yumuşak geçiş efekti */
+        z-index: 10000;
+    }
+
+    .navbarLinks.open {
+        max-height: 300px; /* Açıldığında menü yüksekliği */
+    }
+
+    .navbarLink {
+        padding: 10px 20px;
+        text-align: center;
+        border-bottom: 1px solid #444;
+    }
+
+    .navbarLangOption {
+        margin: 10px auto;
+        width: 90%;
+        text-align: center;
+    }
 }

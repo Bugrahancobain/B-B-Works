@@ -137,6 +137,7 @@
 
 .social-container {
     display: flex;
+    width: 90%;
     align-items: center;
     justify-content: space-between;
     padding: 30px;
@@ -272,3 +273,61 @@
     color: grey;
     font-weight: 800;
   }
+
+  @media (max-width: 850px) {
+    .referenceDetailPage{
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin: auto 0;
+    }
+    .referenceDetailsHeaderDiv{
+      width: 100%;
+    }
+    .referenceSidebar{
+      position: static;
+      margin: 0 !important;
+
+    justify-content: center;
+
+      width: 100%;
+    }
+    .displayNoneClass{
+      display: none;
+    }
+
+    .SidebarCenterClass{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+    }
+  }
+
+  @media (max-width: 550px) {
+    .referenceDetailHeaderDiv{
+        width: 90%;
+    }
+    .referenceDetailContent{
+        width: 90%;
+    }
+    .previousNextReferenceContent{
+        width: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: max-content;
+        text-align: center;
+        margin: 50px 0;
+        gap: 30px;
+    }
+    .previousReference, .nextReference{
+        width: 100%;
+        height: max-content;
+    }
+    .referenceDetailPage{
+      padding: 0;
+      width: 100%;
+          }
+}

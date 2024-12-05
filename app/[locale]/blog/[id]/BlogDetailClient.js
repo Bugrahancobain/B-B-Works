@@ -1,16 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { FaHeart, FaTwitter, FaFacebook, FaEnvelope, FaLink, FaChevronDown, FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import Link from "next/link";
+import { useLikes } from "../../../../useLikes";
 import { useTranslations } from "next-intl";
 import "./blogDetail.css";
 
 function BlogDetailClient({ blog, blogs, locale }) {
     const t = useTranslations("BlogDetailPage");
-
-    const [likes, setLikes] = React.useState(0);
-    const [isLiked, setIsLiked] = React.useState(false);
+    const { likesCount, isLiked, handleToggleLike } = useLikes("blogs", blog.id);
     const currentUrl = typeof window !== "undefined" ? window.location.href : "";
 
     // Mevcut blogun indeksini bul
@@ -19,11 +18,13 @@ function BlogDetailClient({ blog, blogs, locale }) {
     // Bir önceki ve bir sonraki blogu hesapla
     const previousBlog = currentIndex > 0 ? blogs[currentIndex - 1] : null;
     const nextBlog = currentIndex < blogs.length - 1 ? blogs[currentIndex + 1] : null;
+    useEffect(() => {
+        if (!localStorage.getItem("deviceId")) {
+            const newDeviceId = `device-${Date.now()}-${Math.random().toString(36).substring(2, 15)}`;
+            localStorage.setItem("deviceId", newDeviceId);
+        }
+    }, []);
 
-    const handleLike = () => {
-        setLikes((prev) => (isLiked ? prev - 1 : prev + 1));
-        setIsLiked(!isLiked);
-    };
 
     const handleShare = (platform) => {
         switch (platform) {
@@ -58,17 +59,17 @@ function BlogDetailClient({ blog, blogs, locale }) {
                             <span>B&B</span>
                         </li>
                         <li>
-                            <span>{new Intl.DateTimeFormat(locale, { dateStyle: "medium" }).format(new Date(blog.dateAdded))}</span>
+                            <p>{new Date(blog.dateAdded).toISOString().split("T")[0]}</p>
                         </li>
                     </ul>
                 </div>
             </div>
             <div className="blogDetailContent">
-                <div dangerouslySetInnerHTML={{ __html: blog.content?.[locale] }} />
+                <div style={{ lineHeight: "1.6" }} dangerouslySetInnerHTML={{ __html: blog.content?.[locale] }} />
                 <div className="social-container">
-                    <div className="like-button" onClick={handleLike}>
+                    <div className="like-button" onClick={handleToggleLike}>
                         <FaHeart className={`heart-icon ${isLiked ? "liked" : ""}`} />
-                        <span className="like-count">{likes}</span>
+                        <span className="like-count">{likesCount || 0}</span>
                     </div>
                     <div className="share-buttons">
                         <button className="share-button twitter" onClick={() => handleShare("twitter")} aria-label="Share on Twitter">

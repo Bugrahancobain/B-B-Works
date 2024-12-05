@@ -32,3 +32,20 @@
 .companyPageMain div img:hover {
     filter: none
 }
+
+@media (max-width: 1082px){
+    .companyPageMain{
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-between;
+        height: 550px;
+    }
+    .companyPageMain div{
+        width: 80%;
+        text-align: center;
+        justify-content: center;
+    }
+    .homePageServicesDivMain h2 {
+        width: 90%;
+    }
+}

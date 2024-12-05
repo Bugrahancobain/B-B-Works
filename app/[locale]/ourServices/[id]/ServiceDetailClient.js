@@ -1,26 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
-import { FaHeart, FaTwitter, FaFacebook, FaEnvelope, FaLink, FaChevronLeft, FaChevronRight, FaChevronDown } from "react-icons/fa";
+import React, { useEffect } from "react";
+import { FaHeart, FaTwitter, FaFacebook, FaEnvelope, FaLink, FaChevronDown } from "react-icons/fa";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-
+import { useLikes } from "../../../../useLikes";
 import "./serviceDetail.css";
 
 export default function ServiceDetailClient({ locale, service, services }) {
     const t = useTranslations("OurServicesDetailsPage");
+    const { likesCount, isLiked, handleToggleLike } = useLikes("services", service.id);
 
-    const [likes, setLikes] = useState(0);
-    const [isLiked, setIsLiked] = useState(false);
 
     const currentIndex = services.findIndex((s) => s.id === service.id);
     const previousService = currentIndex > 0 ? services[currentIndex - 1] : null;
     const nextService = currentIndex < services.length - 1 ? services[currentIndex + 1] : null;
 
-    const handleLike = () => {
-        setLikes((prev) => (isLiked ? prev - 1 : prev + 1));
-        setIsLiked(!isLiked);
-    };
 
     const handleShare = (platform) => {
         const currentUrl = typeof window !== "undefined" ? window.location.href : "";
@@ -42,6 +37,12 @@ export default function ServiceDetailClient({ locale, service, services }) {
                 break;
         }
     };
+    useEffect(() => {
+        if (!localStorage.getItem("deviceId")) {
+            const newDeviceId = `device-${Date.now()}-${Math.random().toString(36).substring(2, 15)}`;
+            localStorage.setItem("deviceId", newDeviceId);
+        }
+    }, []);
 
     return (
         <div className="serviceDetailPage">
@@ -62,13 +63,16 @@ export default function ServiceDetailClient({ locale, service, services }) {
             </div>
             <div className="serviceDetailContent">
                 <div
-                    style={{ lineHeight: "1.5" }}
+                    style={{ lineHeight: "1.6" }}
                     dangerouslySetInnerHTML={{ __html: service.details?.[locale] }}
                 />
+
+            </div>
+            <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
                 <div className="social-container">
-                    <div className="like-button" onClick={handleLike}>
+                    <div className="like-button" onClick={handleToggleLike}>
                         <FaHeart className={`heart-icon ${isLiked ? "liked" : ""}`} />
-                        <span className="like-count">{likes}</span>
+                        <span className="like-count">{likesCount || 0}</span>
                     </div>
                     <div className="share-buttons">
                         <button onClick={() => handleShare("twitter")} className="share-button twitter">

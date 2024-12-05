@@ -9,6 +9,8 @@ import { IoIosMail } from "react-icons/io";
 import { MdPhoneIphone } from "react-icons/md";
 import emailjs from "emailjs-com";
 import { useTranslations } from "next-intl";
+import Company from "../../../components/Company";
+
 
 function ContactPage({ params }) {
     const resolvedParams = React.use(params);
@@ -213,7 +215,7 @@ function ContactPage({ params }) {
                         <p>{t("contactInfoEmail")}</p>
                     </div>
                 </div>
-                <div>
+                <div className="formClassTest">
                     <form ref={form} onSubmit={sendEmail} className="contactForm">
                         <div className="formGroup">
                             <FaUser className="formIcon" />
@@ -241,6 +243,7 @@ function ContactPage({ params }) {
                     </form>
                 </div>
             </div>
+            <Company />
             <div className="meetPage" ref={contactMeetRef}>
                 <div className="meetFormText">
                     <h3>{t("meetUsTitle")}</h3>

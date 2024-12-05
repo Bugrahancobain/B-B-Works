@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import "./blog.css";
 import Link from "next/link";
@@ -8,6 +8,22 @@ import { useTranslations } from "next-intl";
 
 export default function BlogClient({ blogs, locale }) {
     const t = useTranslations("BlogPage");
+
+    // Sayfalama için durumlar
+    const [currentPage, setCurrentPage] = useState(1);
+    const blogsPerPage = 5;
+
+    // Blogları sayfalara bölme
+    const indexOfLastBlog = currentPage * blogsPerPage;
+    const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
+    const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
+
+    // Toplam sayfa sayısını hesaplama
+    const totalPages = Math.ceil(blogs.length / blogsPerPage);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
     const formatDate = (dateString) => {
         try {
@@ -30,7 +46,7 @@ export default function BlogClient({ blogs, locale }) {
             </div>
             <div className="blogPageMain">
                 <div className="blogMain">
-                    {blogs.map((blog) => (
+                    {currentBlogs.map((blog) => (
                         <div key={blog.id}>
                             <Link
                                 className="blogCard"
@@ -80,6 +96,19 @@ export default function BlogClient({ blogs, locale }) {
                         />
                     </div>
                 </div>
+            </div>
+
+            {/* Sayfalama Butonları */}
+            <div className="pagination">
+                {Array.from({ length: totalPages }, (_, index) => (
+                    <button
+                        key={index + 1}
+                        className={`page-button ${currentPage === index + 1 ? "active" : ""}`}
+                        onClick={() => handlePageChange(index + 1)}
+                    >
+                        {index + 1}
+                    </button>
+                ))}
             </div>
         </div>
     );

@@ -1,19 +1,26 @@
 "use client";
+
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa"; // Burger menü ikonları
 import "../componentsStyle/Navbar.css";
 
 const Navbar = ({ locale }) => {
   const t = useTranslations("NavbarLinks");
   const pathname = usePathname();
   const router = useRouter();
+  const [isMenuOpen, setMenuOpen] = useState(false); // Menü açık/kapalı durumu
 
   const handleLanguageChange = (e) => {
     const newLocale = e.target.value;
     const path = pathname.split("/").slice(2).join("/");
     router.push(`/${newLocale}/${path}`);
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen); // Menü durumunu değiştir
   };
 
   return (
@@ -23,11 +30,19 @@ const Navbar = ({ locale }) => {
           B&B Works
         </Link>
       </div>
-      <div className="navbarLinks">
+
+      {/* Burger Menü İkonu */}
+      <div className="burgerMenuIcon" onClick={toggleMenu}>
+        {isMenuOpen ? <FaTimes /> : <FaBars />}
+      </div>
+
+      {/* Menü */}
+      <div className={`navbarLinks ${isMenuOpen ? "open" : ""}`}>
         <Link
           className={`navbarLink ${pathname === `/${locale}` || pathname === `/${locale}/` ? "active" : ""
             }`}
           href={`/${locale}/`}
+          onClick={toggleMenu} // Mobil menüde tıklandığında menüyü kapat
         >
           {t("home")}
         </Link>
@@ -35,6 +50,7 @@ const Navbar = ({ locale }) => {
           className={`navbarLink ${pathname === `/${locale}/aboutUs` ? "active" : ""
             }`}
           href={`/${locale}/aboutUs`}
+          onClick={toggleMenu}
         >
           {t("about")}
         </Link>
@@ -42,6 +58,7 @@ const Navbar = ({ locale }) => {
           className={`navbarLink ${pathname === `/${locale}/ourServices` ? "active" : ""
             }`}
           href={`/${locale}/ourServices`}
+          onClick={toggleMenu}
         >
           {t("ourServices")}
         </Link>
@@ -49,6 +66,7 @@ const Navbar = ({ locale }) => {
           className={`navbarLink ${pathname === `/${locale}/references` ? "active" : ""
             }`}
           href={`/${locale}/references`}
+          onClick={toggleMenu}
         >
           {t("references")}
         </Link>
@@ -56,6 +74,7 @@ const Navbar = ({ locale }) => {
           className={`navbarLink ${pathname === `/${locale}/blog` ? "active" : ""
             }`}
           href={`/${locale}/blog`}
+          onClick={toggleMenu}
         >
           {t("blog")}
         </Link>
@@ -63,6 +82,7 @@ const Navbar = ({ locale }) => {
           className={`navbarLink ${pathname === `/${locale}/contact` ? "active" : ""
             }`}
           href={`/${locale}/contact`}
+          onClick={toggleMenu}
         >
           {t("contact")}
         </Link>

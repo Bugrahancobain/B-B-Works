@@ -110,7 +110,7 @@ button:disabled {
 .contactFormDiv{
     display: flex;
     justify-content: space-evenly;
-    margin-top: 100px;
+    margin: 100px auto;
     width: 100%;
 }
 
@@ -298,4 +298,88 @@ button:disabled {
 
 .meetSubmitButton:hover {
     background-color: red;
+}
+
+@media (max-width: 1024px) {
+    .contactFormDiv, .meetPage{
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        width: 100%;
+    }
+    .formClassTest{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+    .formGroup, .contactForm,.meetFormGroup, .meetForm{
+    width: 90% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+    .formGroup input, .formGroup textarea, .meetForm input, .meetForm textarea{
+        width: 100% !important;
+    }
+
+    .contactFormText, .meetFormText{
+        width: 90%;
+    }
+
+    .contactMarkt, .meetMarkt{
+        justify-content: center;
+    }
+
+    .contactFormText h2, .contactMeetText h2 {
+    width: 100%;
+    text-align: center;
+    }
+
+    .meetForm h2, .contactForm h2{
+        font-size: 30px;
+    }
+    .meetForm h4{
+        width: 90%;
+    }
+}
+
+@media (max-width: 870px) {
+    .contactInfoDiv{
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 450px) {
+    
+    .contactFormDiv{
+        width: 100% !important;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .formClassTest{
+        width: 90% !important;
+    }
+    .meetPage{
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    .meetFormText{
+        width: 100%;
+        text-align: center;
+    }
+    .meetForm{
+        text-align: center;
+    }
 }

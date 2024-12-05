@@ -1,13 +1,19 @@
 "use client";
+import withAuth from "../../../../components/withAuth";
 
 import React, { useState, useEffect } from "react";
 import AdminSidebar from "../../../../components/AdminSidebar";
 import { Editor } from "@tinymce/tinymce-react";
 import { realtimeDb } from "../../../../firebase";
 import { ref, set, onValue, remove } from "firebase/database";
+import { useTranslations } from "next-intl";
 import "./adminServices.css";
 
+
+
 function Page({ params }) {
+    const t = useTranslations("AdminSidebar");
+
     const resolvedParams = React.use(params);
     const locale = resolvedParams?.locale || "en";
 
@@ -22,6 +28,24 @@ function Page({ params }) {
         shortDescription: { en: "", tr: "" },
         details: { en: "", tr: "" },
     });
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            if (!currentUser) {
+                window.location.href = `/${locale}/login`;
+                alert(t("redirecting"));
+            } else {
+                setUser(currentUser);
+            }
+        });
+
+        return () => unsubscribe();
+    }, [locale, t]);
+
+    if (!user) {
+        return <div>{t("loading")}</div>;
+    }
 
     useEffect(() => {
         const servicesRef = ref(realtimeDb, "services");
@@ -210,4 +234,4 @@ function Page({ params }) {
     );
 }
 
-export default Page;
+export default withAuth(Page);

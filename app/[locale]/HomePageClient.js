@@ -78,7 +78,7 @@ export default function HomePageClient({ locale, services, blogs }) {
                         style={{ transform: `translate(${offset.x}px, ${offset.y}px)` }}
                     >
                         <img
-                            style={{ width: "700px", height: "400px" }}
+                            style={{ width: "100%", height: "400px" }}
                             src="https://panda.axiomthemes.com/wp-content/uploads/2021/11/image-1-copyright.svg"
                             alt="B&B"
                         />

@@ -1,4 +1,5 @@
 "use client";
+import withAuth from "../../../../components/withAuth";
 
 import React, { useState, useEffect } from "react";
 import AdminSidebar from "../../../../components/AdminSidebar";
@@ -197,4 +198,4 @@ function AdminContactPage({ params }) {
     );
 }
 
-export default AdminContactPage;
+export default withAuth(AdminContactPage);
