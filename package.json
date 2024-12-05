@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@tinymce/tinymce-react": "^5.10.0",
+    "@tinymce/tinymce-react": "^5.1.1",
     "emailjs-com": "^3.2.0",
     "firebase": "^11.0.2",
     "firebase-admin": "^13.0.1",
