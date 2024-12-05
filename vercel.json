@@ -1,7 +1,7 @@
 {
-    "build": {
-      "env": {
-        "NPM_FLAGS": "--force"
-      }
+  "build": {
+    "env": {
+      "NODE_OPTIONS": "--force"
     }
   }
+}
