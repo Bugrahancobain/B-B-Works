@@ -8,9 +8,7 @@ import { ref, set, onValue, remove } from "firebase/database";
 import "./adminBlog.css";
 
 function Page({ params }) {
-    const resolvedParams = React.use(params);
-    const locale = resolvedParams?.locale || "en";
-
+    const locale = params?.locale || "en"; // Eğer params varsa locale değerini al
     const [blogs, setBlogs] = useState([]);
     const [isPopupOpen, setPopupOpen] = useState(false);
     const [editMode, setEditMode] = useState(false);

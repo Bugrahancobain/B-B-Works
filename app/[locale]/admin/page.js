@@ -9,7 +9,7 @@ import "./adminHomePage.css";
 
 export default function AdminPage({ params }) {
     const t = useTranslations("AdminPage");
-    const locale = params?.locale || "en";
+    const locale = params?.locale || "en"; // Eğer params varsa locale değerini al
 
     const [user, setUser] = useState(null);
 

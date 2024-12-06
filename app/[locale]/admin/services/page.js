@@ -1,6 +1,7 @@
 "use client";
 import withAuth from "../../../../components/withAuth";
-
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../../../firebase";
 import React, { useState, useEffect } from "react";
 import AdminSidebar from "../../../../components/AdminSidebar";
 import { Editor } from "@tinymce/tinymce-react";
@@ -13,9 +14,7 @@ import "./adminServices.css";
 
 function Page({ params }) {
     const t = useTranslations("AdminSidebar");
-
-    const resolvedParams = React.use(params);
-    const locale = resolvedParams?.locale || "en";
+    const locale = params?.locale || "en"; // Eğer params varsa locale değerini al
 
     const [services, setServices] = useState([]);
     const [isPopupOpen, setPopupOpen] = useState(false);
@@ -29,7 +28,17 @@ function Page({ params }) {
         details: { en: "", tr: "" },
     });
     const [user, setUser] = useState(null);
+    useEffect(() => {
+        const servicesRef = ref(realtimeDb, "services");
 
+        onValue(servicesRef, (snapshot) => {
+            const data = snapshot.val();
+            const servicesArray = data
+                ? Object.entries(data).map(([id, service]) => ({ id, ...service }))
+                : [];
+            setServices(servicesArray);
+        });
+    }, []);
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (!currentUser) {
@@ -47,17 +56,7 @@ function Page({ params }) {
         return <div>{t("loading")}</div>;
     }
 
-    useEffect(() => {
-        const servicesRef = ref(realtimeDb, "services");
 
-        onValue(servicesRef, (snapshot) => {
-            const data = snapshot.val();
-            const servicesArray = data
-                ? Object.entries(data).map(([id, service]) => ({ id, ...service }))
-                : [];
-            setServices(servicesArray);
-        });
-    }, []);
 
     const handleAddService = () => {
         const newServiceKey = editMode ? editServiceId : Date.now().toString();

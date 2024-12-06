@@ -7,14 +7,12 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 export default function withAuth(Component) {
-    return function AuthenticatedComponent(props) {
+    return function AuthenticatedComponent(props, locale) {
         const router = useRouter();
         const [user, setUser] = useState(null);
         const [loading, setLoading] = useState(true);
 
         // `params`'ı unwrap etmek
-        const params = React.use(props.params);
-        const locale = params?.locale || "en";
 
         useEffect(() => {
             const unsubscribe = onAuthStateChanged(auth, (currentUser) => {

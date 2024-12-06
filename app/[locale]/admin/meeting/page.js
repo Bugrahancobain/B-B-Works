@@ -9,12 +9,11 @@ import { Editor } from "@tinymce/tinymce-react"; // TinyMCE Editörü
 import "./adminContact.css";
 
 function AdminContactPage({ params }) {
-    const resolvedParams = React.use(params);
-    const locale = resolvedParams?.locale || "en";
+    const locale = params?.locale || "en"; // Eğer params varsa locale değerini al
     const [meetings, setMeetings] = useState([]);
     const [editMeeting, setEditMeeting] = useState(null); // Düzenlenen toplantı bilgileri
     const [isPopupOpen, setPopupOpen] = useState(false);
-
+    console.log("Locale:", locale);
     useEffect(() => {
         const meetingsRef = ref(realtimeDb, "meetings");
 
