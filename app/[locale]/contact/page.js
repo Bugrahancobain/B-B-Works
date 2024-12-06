@@ -12,8 +12,8 @@ import { useTranslations } from "next-intl";
 import Company from "../../../components/Company";
 
 
-function ContactPage({ params }) {
-    const id = params?.id; // Hizmet ID'si
+function ContactPage({ locale }) {
+
     const t = useTranslations("ContactPage");
     const [formData, setFormData] = useState({
         firstName: "",
