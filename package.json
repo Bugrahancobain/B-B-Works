@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "install": "npx npm-force-resolutions && npm install --legacy-peer-deps"
+    "lint": "next lint"
   },
   "resolutions": {
     "@tinymce/tinymce-react": "5.1.1"
