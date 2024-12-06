@@ -8,12 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "preinstall": "npx npm-force-resolutions",
-      "install": "npm install --legacy-peer-deps"
+    "install": "npm install --legacy-peer-deps"
   },
-    "resolutions": {
-      "@tinymce/tinymce-react": "5.1.1"
-    },
-  
+  "resolutions": {
+    "@tinymce/tinymce-react": "5.1.1"
+  },
   "dependencies": {
     "@tinymce/tinymce-react": "^5.1.1",
     "emailjs-com": "^3.2.0",
@@ -21,9 +20,9 @@
     "firebase-admin": "^13.0.1",
     "next": "13.4.5",
     "next-intl": "^3.25.1",
-    "react": "^19.0.0-rc-66855b96-20241106",
+    "react": "^18.3.1",
     "react-countup": "^6.5.3",
-    "react-dom": "^19.0.0-rc-66855b96-20241106",
+    "react-dom": "^18.3.1",
     "react-google-recaptcha": "^3.1.0",
     "react-icons": "^5.3.0",
     "react-slick": "^0.30.2",
