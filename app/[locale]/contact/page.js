@@ -13,8 +13,7 @@ import Company from "../../../components/Company";
 
 
 function ContactPage({ params }) {
-    const resolvedParams = React.use(params);
-    const id = resolvedParams?.id; // Hizmet ID'si
+    const id = params?.id; // Hizmet ID'si
     const t = useTranslations("ContactPage");
     const [formData, setFormData] = useState({
         firstName: "",

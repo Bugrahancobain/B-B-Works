@@ -6,17 +6,14 @@ import Company from "../../../components/Company";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 
-
 export default function AboutPage({ params }) {
     const [offset, setOffset] = useState({ x: 0, y: 0 });
 
-    const resolvedParams = React.use(params); // `params` çözülüyor
-    const locale = resolvedParams.locale || "en"; // Varsayılan dil 'en'
+    // Doğrudan params nesnesini kullan
+    const locale = params?.locale || "en"; // Varsayılan dil 'en'
     const t = useTranslations("AboutPage");
 
     useEffect(() => {
-
-
         const handleMouseMove = (e) => {
             const centerX = window.innerWidth / 2;
             const centerY = window.innerHeight / 2;
@@ -33,6 +30,7 @@ export default function AboutPage({ params }) {
             window.removeEventListener("mousemove", handleMouseMove);
         };
     }, []);
+
     return (
         <div className="aboutPageMain">
             <div className="aboutPageHeaderDiv">
