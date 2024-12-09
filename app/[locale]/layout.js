@@ -16,7 +16,7 @@ export const metadata = {
     title: "B&B Works",
     description: "Welcome to B&B Works. Explore our digital agency.",
     type: "website",
-    url: "https://www.bbworks.com",
+    url: "https://www.bnb-works.com/",
     images: "/default-image.jpg",
   },
 };
