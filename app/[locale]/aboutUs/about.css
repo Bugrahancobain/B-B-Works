@@ -51,7 +51,7 @@
 .aboutPageTopCommitFirst, .aboutPageTopCommitSecond{
     display: flex;
     align-items: center;
-    height: 70px;
+    height: 100px;
 }
 
 .aboutPageTopCommitFirst img, .aboutPageTopCommitSecond img{
@@ -102,4 +102,12 @@
         gap: 0;
         align-items: center;
     }
+    .aboutPageHeaderDiv{
+        padding: 0;
+    }
+    .aboutFirstImgDiv img, .aboutFirstImgDiv img{
+        height: auto !important;
+        margin: 20px auto !important;
+    }
+    
 }

@@ -34,6 +34,28 @@ function OurServicesClient({ locale, services, referencesCount }) {
             window.removeEventListener("mousemove", handleMouseMove);
         };
     }, []);
+    useEffect(() => {
+        const checkVisibility = () => {
+            const exsDiv = document.querySelector(".servicesPageExperiences");
+            if (exsDiv) {
+                const rectBars = exsDiv.getBoundingClientRect();
+                // Eğer eleman görünürse animasyonu başlat
+                if (rectBars.top < window.innerHeight - 100 && rectBars.bottom >= 0) {
+                    setIsVisible(true);
+                }
+            }
+        };
+
+        // Sayfa yüklendiğinde kontrol et
+        checkVisibility();
+
+        // Scroll olayını dinle
+        window.addEventListener("scroll", checkVisibility);
+
+        return () => {
+            window.removeEventListener("scroll", checkVisibility);
+        };
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {

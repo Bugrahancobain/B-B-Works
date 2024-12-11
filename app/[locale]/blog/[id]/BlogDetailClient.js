@@ -54,10 +54,6 @@ function BlogDetailClient({ blog, blogs, locale }) {
                 <div className="blogDetailHeaderDiv">
                     <h1>{blog.title[locale]}</h1>
                     <ul>
-                        <li className="blogDetailsProfile">
-                            <img src="#" alt="B&B" />
-                            <span>B&B</span>
-                        </li>
                         <li>
                             <p>{new Date(blog.dateAdded).toISOString().split("T")[0]}</p>
                         </li>

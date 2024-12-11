@@ -9,7 +9,7 @@
   },
   "HomePage": {
     "headerTitle": "Pazarlama için Doğru Sosyal Ağ",
-    "headerDescription": "Consectetur adipiscing elit, sed do eiusmod tempor incididunt dolore magna aliqua quis nostrud exerc.",
+    "headerDescription": "İşletmenizle hedef kitleniz arasında güçlü bir bağ kurun.",
     "aboutUs": "Hakkımızda",
     "ourServicesTitle": "Hizmetlerimiz",
     "ourServicesSubtitle": "Uzman SEO ve Pazarlama Hizmetleri Sunuyoruz",
@@ -20,7 +20,7 @@
     "people": "Kişiler",
     "aboutUsSubtitle": "Dijital Geleceği Geliştiriyor ve Yaratıyoruz",
     "aboutUsDescription": "Adipiscing elit, sed do eiusmod tempor incididunt labore dolore magna aliqua. Ut enim ad minim veniam, quisq wiusmod ut tempor incididunt ut labore et dolore sed do magna aliqua.",
-    "contactEmail": "info@example.com",
+    "contactEmail": "info@bnb-works.com",
     "blogTitle": "Blogumuz",
     "blogSubtitle": "Son Yazılar",
     "viewAllArticles": "Tüm Yazıları Gör"
@@ -41,7 +41,7 @@
   "servicesHeader": "Hizmetler",
   "ourServices": "Hizmetlerimiz",
   "expertsReady": "Uzmanlarımız Yardımcı Olmaya Hazır",
-  "description": "Açıklamalar ve detaylar burada yer alacaktır. Uzmanlarımız her zaman yanınızda.",
+  "description": "Uzman ekibimiz, ihtiyaçlarınıza en uygun çözümleri sunmak için her zaman yanınızda. Hedeflerinize ulaşmanız için birlikte çalışıyoruz.",
   "experience": "Deneyimler",
   "people": "Kişiler",
   "readMore": "Daha Fazla Oku",
@@ -60,24 +60,24 @@
     "weekdays": "Pazartesi-Cuma: 9:00 - 17:00",
     "weekend": "Cumartesi-Pazar: Kapalı",
     "addressTitle": "Adres",
-    "addressDetails": "176 W sokak adı, New York, NY 10014",
+    "addressDetails": "Beşiktaş / İstanbul",
     "checkLocation": "Konumu Kontrol Et",
     "getInTouchTitle": "Bizimle İletişime Geçin",
-    "telephone": "Telefon: +1(800)123-4566",
-    "email": "E-posta: bnb-works.com/",
+    "telephone": "Telefon: +90(506) 156 63 64",
+    "email": "E-posta: info@bnb-works.com",
     "contactForm": "İletişim Formu",
     "getInMeetTitle": "Toplantı Ayarla",
     "getInMeetDetails": "Google Meet - Zoom",
     "makeAppointment": "Randevu Ayarla",
     "contactUsTitle": "Bize Ulaşın",
     "contactUsSubtitle": "Sorularınız mı var? Bizimle iletişime geçin!",
-    "contactUsDescription": "Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.",
+    "contactUsDescription": "Sorularınızı yanıtlamaktan memnuniyet duyarız. Size en iyi hizmeti sunmak için buradayız!",
     "meetUsTitle": "Bize Ulaşın",
-    "meetUsSubtitle": "Sorularınız mı var? Bizimle iletişime geçin!",
-    "meetUsDescription": "Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.",
-    "contactInfoAddress": "785 15h Cadde, Ofis 478 Berlin",
-    "contactInfoPhone": "+1 840 841 25 69",
-    "contactInfoEmail": "info@email.com",
+    "meetUsSubtitle": "Daha detaylı mı görüşmek istiyorsunuz? Bizden randevu alın!",
+    "meetUsDescription": "Sizinle görüşmekten memnuniyet duyarız. Size en iyi hizmeti sunmak için buradayız!",
+    "contactInfoAddress": "Beşiktaş / İstanbul",
+    "contactInfoPhone": "+90(506) 156 63 64",
+    "contactInfoEmail": "info@bnb-works.com",
     "formName": "Adınız",
     "formEmail": "E-posta Adresi",
     "formPhone": "Telefon",
@@ -91,7 +91,7 @@
     "meetFormExtraInfo": "Ek Bilgiler (isteğe bağlı)",
     "selectDate": "Tarih Seçin",
     "selectTime": "Saat Seçin",
-    "meetFormSubmit": "Gönder"
+    "meetFormSubmit": "Randevu Al"
   },
   "BlogPage": {
     "header": "Blog Listesi",
@@ -115,15 +115,15 @@
     "header": "Hakkımızda",
     "firstSection": {
       "title": "Dijital İşinizi Büyütmenize Yardımcı Oluyoruz",
-      "subtitle": "Dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia.",
+      "subtitle": "İşletmenizin dijital dünyada büyümesi için yenilikçi çözümler sunuyoruz. Yaratıcı tasarımlar ve stratejilerle işinizi bir adım öteye taşıyoruz.",
       "commitments": {
         "creativeDesign": {
           "title": "Yaratıcı Tasarım",
-          "description": "Natus error sit voluptatem accus antium doloremque."
+          "description": "Özgün tasarımlarımızla markanızı öne çıkarıyoruz. Modern ve etkileyici çözümlerle fark yaratın."
         },
         "endlessPossibilities": {
           "title": "Sonsuz Olanaklar",
-          "description": "Sit voluptatem accus antium doloremque laudan."
+          "description": "Dijital dünyada sınırsız fırsatlar sunuyoruz. İşinizi büyütmek için yenilikçi araçlarla destek sağlıyoruz"
         }
       }
     },
@@ -160,9 +160,9 @@
   },
   "FooterLinks": {
     "office": "Ofis",
-    "address": "Almanya — 785 15h Sokak, Ofis 478 Berlin, De 81566",
-    "email": "info@email.com",
-    "phone": "+1 840 841 25 69",
+    "address": "Beşiktaş / İstanbul",
+    "email": "info@bnb-works.com",
+    "phone": "+90(506) 156 63 64",
     "links": "Bağlantılar",
     "contactWithUs": "İletişime Geçin",
     "rights": "© B&B WORKS {year}. TÜM HAKLARI SAKLIDIR.",

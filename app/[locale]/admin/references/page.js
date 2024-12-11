@@ -27,6 +27,18 @@ function Page({ params }) {
         email: "",
         details: { en: "", tr: "" },
     });
+    const [isDeletePopupOpen, setDeletePopupOpen] = useState(false);
+    const [referenceToDelete, setReferenceToDelete] = useState(null);
+
+    const openDeletePopup = (id) => {
+        setReferenceToDelete(id); // Silinecek referansın ID'sini kaydet
+        setDeletePopupOpen(true); // Popup'u aç
+    };
+
+    const closeDeletePopup = () => {
+        setReferenceToDelete(null); // Silinecek referans ID'sini temizle
+        setDeletePopupOpen(false); // Popup'u kapat
+    };
 
     useEffect(() => {
         const referencesRef = ref(realtimeDb, "references");
@@ -116,7 +128,31 @@ function Page({ params }) {
                 >
                     + Referans Ekle
                 </button>
-
+                {isDeletePopupOpen && (
+                    <div className="deletePopup">
+                        <div className="deletePopupContent">
+                            <h3>Emin misiniz?</h3>
+                            <p>Bu referansı silmek istediğinizden emin misiniz?</p>
+                            <div className="deletePopupActions">
+                                <button
+                                    className="cancelButton"
+                                    onClick={closeDeletePopup}
+                                >
+                                    Vazgeç
+                                </button>
+                                <button
+                                    className="deleteButton"
+                                    onClick={() => {
+                                        handleDeleteReference(referenceToDelete);
+                                        closeDeletePopup();
+                                    }}
+                                >
+                                    Sil
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
                 {isPopupOpen && (
                     <div className="adminReferencesPopup">
                         <h2>{editMode ? "Referansı Düzenle" : "Yeni Referans Ekle"}</h2>
@@ -222,7 +258,7 @@ function Page({ params }) {
                             <p>{reference.dateAdded}</p>
                             <div className="adminReferencesCardActions">
                                 <button onClick={() => handleEditReference(reference.id)}>Düzenle</button>
-                                <button onClick={() => handleDeleteReference(reference.id)}>Sil</button>
+                                <button onClick={() => openDeletePopup(reference.id)}>Sil</button>
                             </div>
                         </div>
                     ))}

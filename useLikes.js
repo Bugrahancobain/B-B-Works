@@ -17,10 +17,20 @@ export const useLikes = (type, itemId) => {
         fetchLikes();
     }, [type, itemId, deviceId]);
 
-    const handleToggleLike = async () => {
-        const updatedLikes = await toggleLike(type, itemId, deviceId);
-        setLikesCount(Object.keys(updatedLikes || {}).length);
-        setIsLiked(!isLiked);
+    var debounceTimer;
+
+    const handleToggleLike = () => {
+        clearTimeout(debounceTimer); // Önceki zamanlayıcıyı temizle
+
+        debounceTimer = setTimeout(async () => {
+            try {
+                const updatedLikes = await toggleLike(type, itemId, deviceId);
+                setLikesCount(Object.keys(updatedLikes || {}).length);
+                setIsLiked(!isLiked);
+            } catch (error) {
+                console.error("Beğeni işlemi sırasında bir hata oluştu:", error);
+            }
+        }, 300); // 300ms bekleme süresi
     };
 
     return { likesCount, isLiked, handleToggleLike };

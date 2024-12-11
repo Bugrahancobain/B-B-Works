@@ -21,6 +21,19 @@ function Page({ params }) {
         dateAdded: "", // Eklenme tarihi
     });
 
+    const [isDeletePopupOpen, setDeletePopupOpen] = useState(false);
+    const [blogToDelete, setBlogToDelete] = useState(null);
+
+    const openDeletePopup = (id) => {
+        setBlogToDelete(id); // Silinecek blogun ID'sini kaydet
+        setDeletePopupOpen(true); // Popup'u aç
+    };
+
+    const closeDeletePopup = () => {
+        setBlogToDelete(null); // Silinecek blog ID'sini temizle
+        setDeletePopupOpen(false); // Popup'u kapat
+    };
+
     // Tarih formatını dönüştürme fonksiyonu
     function parseDate(dateString) {
         const [day, month, year] = dateString.split(".");
@@ -117,7 +130,31 @@ function Page({ params }) {
                 >
                     + Blog Ekle
                 </button>
-
+                {isDeletePopupOpen && (
+                    <div className="deletePopup">
+                        <div className="deletePopupContent">
+                            <h3>Emin misiniz?</h3>
+                            <p>Bu blogu silmek istediğinizden emin misiniz?</p>
+                            <div className="deletePopupActions">
+                                <button
+                                    className="cancelButton"
+                                    onClick={closeDeletePopup}
+                                >
+                                    Vazgeç
+                                </button>
+                                <button
+                                    className="deleteButton"
+                                    onClick={() => {
+                                        handleDeleteBlog(blogToDelete);
+                                        closeDeletePopup();
+                                    }}
+                                >
+                                    Sil
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
                 {isPopupOpen && (
                     <div className="adminBlogPopup">
                         <h2>{editMode ? "Blogu Düzenle" : "Yeni Blog Ekle"}</h2>
@@ -189,7 +226,7 @@ function Page({ params }) {
                             <p>{blog.dateAdded}</p>
                             <div className="adminBlogCardActions">
                                 <button onClick={() => handleEditBlog(blog.id)}>Düzenle</button>
-                                <button onClick={() => handleDeleteBlog(blog.id)}>Sil</button>
+                                <button onClick={() => openDeletePopup(blog.id)}>Sil</button>
                             </div>
                         </div>
                     ))}

@@ -345,13 +345,16 @@ button:disabled {
     .meetForm h4{
         width: 90%;
     }
+    .contactPageHeaderDiv{
+        padding: 20px 0;
+    }
 }
 
 @media (max-width: 870px) {
     .contactInfoDiv{
         flex-direction: column;
         justify-content: center;
-        gap: 30px;
+        gap: 50px;
     }
 }
 

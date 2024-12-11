@@ -28,6 +28,8 @@ function Page({ params }) {
         details: { en: "", tr: "" },
     });
     const [user, setUser] = useState(null);
+    const [isDeletePopupOpen, setDeletePopupOpen] = useState(false);
+    const [serviceToDelete, setServiceToDelete] = useState(null); // Silinmek istenen hizmetin ID'sini tutar
     useEffect(() => {
         const servicesRef = ref(realtimeDb, "services");
 
@@ -97,11 +99,23 @@ function Page({ params }) {
 
     const handleDeleteService = (id) => {
         const servicesRef = ref(realtimeDb, `services/${id}`);
-        remove(servicesRef).catch((error) => {
-            console.error("Hizmet silinirken hata oluştu:", error);
-        });
+        remove(servicesRef)
+            .then(() => {
+                alert("Hizmet başarıyla silindi.");
+            })
+            .catch((error) => {
+                console.error("Hizmet silinirken hata oluştu:", error);
+            });
+    };
+    const openDeletePopup = (id) => {
+        setServiceToDelete(id); // Silinecek hizmetin ID'sini kaydet
+        setDeletePopupOpen(true); // Popup'u aç
     };
 
+    const closeDeletePopup = () => {
+        setServiceToDelete(null); // Silinecek hizmet ID'sini temizle
+        setDeletePopupOpen(false); // Popup'u kapat
+    };
     return (
         <div className="adminServicesMain">
             <div>
@@ -223,12 +237,37 @@ function Page({ params }) {
                             <div dangerouslySetInnerHTML={{ __html: service.shortDescription?.[locale]?.substring(0, 50) + "..." }} />
                             <div className="adminServicesCardActions">
                                 <button onClick={() => handleEditService(service.id)}>Düzenle</button>
-                                <button onClick={() => handleDeleteService(service.id)}>Sil</button>
+                                <button onClick={() => openDeletePopup(service.id)}>Sil</button>
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
+            {isDeletePopupOpen && (
+                <div className="deletePopup">
+                    <div className="deletePopupContent">
+                        <h3>Emin misiniz?</h3>
+                        <p>Bu hizmeti silmek istediğinizden emin misiniz?</p>
+                        <div className="deletePopupActions">
+                            <button
+                                className="cancelButton"
+                                onClick={closeDeletePopup}
+                            >
+                                Vazgeç
+                            </button>
+                            <button
+                                className="deleteButton"
+                                onClick={() => {
+                                    handleDeleteService(serviceToDelete);
+                                    closeDeletePopup();
+                                }}
+                            >
+                                Sil
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

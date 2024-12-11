@@ -52,7 +52,9 @@ function ContactPage({ locale }) {
     };
 
     const [bookedSlots, setBookedSlots] = useState({}); // Dolu tarih-saat bilgilerini tutar
-    const today = new Date().toISOString().split("T")[0]; // Bugünün tarihi (yyyy-mm-dd)
+    const today = new Date(); // Bugünün tarihi
+    today.setDate(today.getDate() + 2); // Bugünün tarihine 1 gün ekleyerek yarını bul
+    const minDate = today.toISOString().split("T")[0]; // Tarihi yyyy-mm-dd formatına çevir
 
     const timeSlots = [
         "09:00-10:00",
@@ -318,11 +320,9 @@ function ContactPage({ locale }) {
                             type="date"
                             value={formData.date}
                             name="user_date"
-                            onChange={(e) =>
-                                setFormData({ ...formData, date: e.target.value })
-                            }
+                            onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                             required
-                            min={today} // Geçmiş tarihleri engelle
+                            min={minDate} // Yalnızca yarından itibaren seçim yapılabilir
                         />
                         <select
                             value={formData.time}

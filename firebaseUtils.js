@@ -1,23 +1,25 @@
 // firebaseUtils.js
-import { ref, onValue, update, get, set } from "firebase/database";
+import { ref, get, set, remove } from "firebase/database";
 import { realtimeDb } from "./firebase";
 
 // Dinamik bir toggleLike fonksiyonu
 export const toggleLike = async (type, itemId, deviceId) => {
     try {
-        const likesRef = ref(realtimeDb, `${type}/${itemId}/likes`);
-        const snapshot = await get(likesRef);
-        const likesData = snapshot.val() || {};
+        const likeRef = ref(realtimeDb, `${type}/${itemId}/likes/${deviceId}`);
+        const snapshot = await get(likeRef);
 
-        if (likesData[deviceId]) {
+        if (snapshot.exists()) {
             // Beğeniyi kaldır
-            delete likesData[deviceId];
+            await remove(likeRef);
         } else {
             // Beğeni ekle
-            likesData[deviceId] = true;
+            await set(likeRef, true);
         }
 
-        await set(likesRef, likesData);
+        // Toplam beğeni sayısını döndür
+        const likesRef = ref(realtimeDb, `${type}/${itemId}/likes`);
+        const likesSnapshot = await get(likesRef);
+        const likesData = likesSnapshot.val() || {};
         return likesData;
     } catch (error) {
         console.error("Error toggling like:", error);
@@ -30,7 +32,7 @@ export const getLikesCount = async (type, itemId) => {
         const likesRef = ref(realtimeDb, `${type}/${itemId}/likes`);
         const snapshot = await get(likesRef);
         const likesData = snapshot.val() || {};
-        return Object.keys(likesData).length;
+        return Object.keys(likesData).length; // Toplam beğeni sayısını döndür
     } catch (error) {
         console.error("Error getting likes count:", error);
         return 0;
@@ -40,9 +42,9 @@ export const getLikesCount = async (type, itemId) => {
 // Kullanıcının beğeni durumunu kontrol et
 export const hasLiked = async (type, itemId, deviceId) => {
     try {
-        const likesRef = ref(realtimeDb, `${type}/${itemId}/likes/${deviceId}`);
-        const snapshot = await get(likesRef);
-        return snapshot.exists();
+        const likeRef = ref(realtimeDb, `${type}/${itemId}/likes/${deviceId}`);
+        const snapshot = await get(likeRef);
+        return snapshot.exists(); // Cihazın ilgili gönderiyi beğenip beğenmediğini kontrol et
     } catch (error) {
         console.error("Error checking like status:", error);
         return false;

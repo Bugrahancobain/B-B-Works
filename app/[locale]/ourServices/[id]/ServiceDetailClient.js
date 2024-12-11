@@ -51,10 +51,6 @@ export default function ServiceDetailClient({ locale, service, services }) {
                 <div className="serviceDetailHeaderDiv">
                     <h1>{service.title[locale]}</h1>
                     <ul>
-                        <li className="serviceDetailsProfile">
-                            <img src="#" alt="B&B" />
-                            <span>B&B</span>
-                        </li>
                         <li>
                             <span>{new Date(service.dateAdded).toLocaleDateString(locale)}</span>
                         </li>
