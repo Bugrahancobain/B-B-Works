@@ -76,10 +76,10 @@ function Footer() {
                     <a target="_blank" href="https://www.instagram.com/bnbworksagency/">
                         <FaInstagram className="social" />
                     </a>
-                    <a target="_blank" href="#">
+                    <a target="_blank" href="https://www.linkedin.com/company/b-n-b-works/about/">
                         <FaLinkedin className="social" />
                     </a>
-                    <a target="_blank" href="#">
+                    <a target="_blank" href="https://www.facebook.com/profile.php?id=61568852788975&mibextid=wwXIfr&rdid=aazTkXKApSrR0Rc1&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F143Le8PvtL%2F%3Fmibextid%3DwwXIfr">
                         <FaFacebookSquare className="social" />
                     </a>
                 </div>
