@@ -19,3 +19,4 @@ if (!admin.apps.length) {
 const adminRTDB = admin.database(); // Realtime Database erişimi
 
 export { adminRTDB };
+

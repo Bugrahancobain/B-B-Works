@@ -27,7 +27,7 @@ const Navbar = ({ locale }) => {
     <div className="navbarMain">
       <div className="navbarLogoDiv">
         <Link className="navbarLinkLogo" href={`/${locale}/`}>
-          B&B Works
+          <img src="/B&B_Banner_Logo.png" alt="" />
         </Link>
       </div>
 
